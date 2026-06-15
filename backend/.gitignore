@@ -1,0 +1,23 @@
+# Build folders
+bin/
+obj/
+
+# Visual Studio
+.vs/
+*.user
+*.suo
+
+# VS Code
+.vscode/
+
+# Rider
+.idea/
+
+# Codex
+.codex/
+
+# Test results
+TestResults/
+
+# Local config
+appsettings.Development.json
