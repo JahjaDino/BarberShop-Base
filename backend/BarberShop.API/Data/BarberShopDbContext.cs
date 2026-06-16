@@ -96,10 +96,19 @@ public class BarberShopDbContext : DbContext
             .HasFilter("\"Active\" = TRUE");
 
         modelBuilder.Entity<Service>()
+            .Property(service => service.AllowOverlap)
+            .HasDefaultValue(false);
+
+        modelBuilder.Entity<Service>()
+            .Property(service => service.MaxParallelAppointments)
+            .HasDefaultValue(1);
+
+        modelBuilder.Entity<Service>()
             .ToTable(table =>
             {
                 table.HasCheckConstraint("CK_Services_Price_NonNegative", "\"Price\" >= 0");
                 table.HasCheckConstraint("CK_Services_DurationMinutes_Positive", "\"DurationMinutes\" > 0");
+                table.HasCheckConstraint("CK_Services_MaxParallelAppointments_Range", "\"MaxParallelAppointments\" >= 1 AND \"MaxParallelAppointments\" <= 3");
             });
 
         modelBuilder.Entity<Employee>()

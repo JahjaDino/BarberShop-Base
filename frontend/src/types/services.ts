@@ -23,6 +23,8 @@ export interface ServiceDto {
   description?: string | null
   durationMinutes: number
   price: number
+  allowOverlap: boolean
+  maxParallelAppointments: number
   active: boolean
 }
 
@@ -34,6 +36,8 @@ export interface OwnerServiceListItem {
   categoryName: string
   durationMinutes: number
   price: number
+  allowOverlap: boolean
+  maxParallelAppointments: number
   bookingsCount: number
   isActive: boolean
 }
@@ -65,6 +69,8 @@ export interface ServiceCreateRequest {
   description?: string | null
   durationMinutes: number
   price: number
+  allowOverlap?: boolean
+  maxParallelAppointments?: number
 }
 
 export interface ServiceUpdateRequest extends ServiceCreateRequest {
@@ -87,6 +93,8 @@ export interface OwnerServiceCreateRequest {
   description?: string | null
   durationMinutes: number
   price: number
+  allowOverlap: boolean
+  maxParallelAppointments: number
 }
 
 export interface OwnerServiceUpdateRequest extends OwnerServiceCreateRequest {

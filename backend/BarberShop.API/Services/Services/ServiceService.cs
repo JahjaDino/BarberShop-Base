@@ -51,6 +51,8 @@ public class ServiceService
                 Description = service.Description,
                 DurationMinutes = service.DurationMinutes,
                 Price = service.Price,
+                AllowOverlap = service.AllowOverlap,
+                MaxParallelAppointments = service.MaxParallelAppointments,
                 Active = service.Active
             })
             .ToListAsync();
@@ -82,6 +84,8 @@ public class ServiceService
                 Description = service.Description,
                 DurationMinutes = service.DurationMinutes,
                 Price = service.Price,
+                AllowOverlap = service.AllowOverlap,
+                MaxParallelAppointments = service.MaxParallelAppointments,
                 Active = service.Active
             })
             .FirstOrDefaultAsync();
@@ -159,6 +163,8 @@ public class ServiceService
             Description = entity.Description,
             DurationMinutes = entity.DurationMinutes,
             Price = entity.Price,
+            AllowOverlap = entity.AllowOverlap,
+            MaxParallelAppointments = entity.MaxParallelAppointments,
             Active = entity.Active
         };
     }
@@ -173,6 +179,8 @@ public class ServiceService
             Description = request.Description?.Trim(),
             DurationMinutes = request.DurationMinutes,
             Price = request.Price,
+            AllowOverlap = request.AllowOverlap,
+            MaxParallelAppointments = NormalizeMaxParallelAppointments(request.AllowOverlap, request.MaxParallelAppointments),
             Active = true
         };
     }
@@ -185,12 +193,15 @@ public class ServiceService
         entity.Description = request.Description?.Trim();
         entity.DurationMinutes = request.DurationMinutes;
         entity.Price = request.Price;
+        entity.AllowOverlap = request.AllowOverlap;
+        entity.MaxParallelAppointments = NormalizeMaxParallelAppointments(request.AllowOverlap, request.MaxParallelAppointments);
         entity.Active = request.Active;
     }
 
     protected override async Task BeforeInsert(ServiceEntity entity, ServiceInsertRequest request)
     {
         await EnsureOwnerCanAccessShopAsync(request.ShopId);
+        ValidateOverlapSettings(request.AllowOverlap, request.MaxParallelAppointments);
         await ValidateServiceRequestAsync(request.ShopId, request.CategoryId, request.Name, request.DurationMinutes, request.Price);
         await EnsureNameIsUniqueAsync(request.ShopId, request.Name);
     }
@@ -199,6 +210,7 @@ public class ServiceService
     {
         await EnsureOwnerCanAccessShopAsync(entity.ShopId);
         await EnsureOwnerCanAccessShopAsync(request.ShopId);
+        ValidateOverlapSettings(request.AllowOverlap, request.MaxParallelAppointments);
         await ValidateServiceRequestAsync(request.ShopId, request.CategoryId, request.Name, request.DurationMinutes, request.Price);
         await EnsureNameIsUniqueAsync(request.ShopId, request.Name, entity.Id);
     }
@@ -291,6 +303,24 @@ public class ServiceService
         {
             throw new ForbiddenException("You do not have access to this shop.");
         }
+    }
+
+    private static void ValidateOverlapSettings(bool allowOverlap, int maxParallelAppointments)
+    {
+        if (allowOverlap && (maxParallelAppointments < 1 || maxParallelAppointments > 3))
+        {
+            throw new BadRequestException("Max parallel appointments must be between 1 and 3.");
+        }
+    }
+
+    private static int NormalizeMaxParallelAppointments(bool allowOverlap, int maxParallelAppointments)
+    {
+        if (!allowOverlap)
+        {
+            return 1;
+        }
+
+        return maxParallelAppointments;
     }
 
     private static int NormalizePageSize(int pageSize)

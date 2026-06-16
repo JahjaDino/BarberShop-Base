@@ -190,13 +190,6 @@ public class AppointmentManagementService : IAppointmentManagementService
         var service = await _dbContext.Services
             .AsNoTracking()
             .Where(currentService => currentService.Id == serviceId)
-            .Select(currentService => new
-            {
-                currentService.Id,
-                currentService.ShopId,
-                currentService.DurationMinutes,
-                currentService.Active
-            })
             .FirstOrDefaultAsync();
         if (service is null)
         {
@@ -265,7 +258,10 @@ public class AppointmentManagementService : IAppointmentManagementService
 
         var blockingAppointments = await _dbContext.Appointments
             .AsNoTracking()
+            .Include(appointment => appointment.AppointmentServices)
+            .ThenInclude(appointmentService => appointmentService.Service)
             .Where(appointment => appointment.EmployeeId == employeeId
+                && appointment.Employee.ShopId == employee.ShopId
                 && (appointment.Status.ToUpper() == AppointmentStatuses.PENDING
                     || appointment.Status.ToUpper() == AppointmentStatuses.CONFIRMED)
                 && appointment.StartTime < dayEnd
@@ -285,7 +281,11 @@ public class AppointmentManagementService : IAppointmentManagementService
                 var slotEnd = cursor.Add(duration);
                 if (cursor > now
                     && !OverlapsAny(cursor, slotEnd, timeOffs.Select(timeOff => (timeOff.StartTime, timeOff.EndTime)))
-                    && !OverlapsAny(cursor, slotEnd, blockingAppointments.Select(appointment => (appointment.StartTime, appointment.EndTime))))
+                    && AppointmentOverlapPolicy.IsSlotAvailable(
+                        new[] { service },
+                        blockingAppointments
+                            .Where(appointment => cursor < appointment.EndTime && slotEnd > appointment.StartTime)
+                            .ToList()))
                 {
                     slots.Add(new AvailableSlotDto
                     {

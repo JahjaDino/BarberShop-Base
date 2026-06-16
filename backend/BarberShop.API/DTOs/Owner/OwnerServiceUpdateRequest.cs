@@ -16,5 +16,9 @@ public class OwnerServiceUpdateRequest
 
     public decimal Price { get; set; }
 
+    public bool AllowOverlap { get; set; }
+
+    public int MaxParallelAppointments { get; set; } = 1;
+
     public bool Active { get; set; }
 }

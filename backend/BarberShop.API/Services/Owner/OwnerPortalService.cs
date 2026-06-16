@@ -473,6 +473,8 @@ public class OwnerPortalService : IOwnerPortalService
             CategoryName = service.Category.Name,
             DurationMinutes = service.DurationMinutes,
             Price = service.Price,
+            AllowOverlap = service.AllowOverlap,
+            MaxParallelAppointments = service.MaxParallelAppointments,
             BookingsCount = _dbContext.AppointmentServices.Count(appointmentService => appointmentService.ServiceId == service.Id),
             IsActive = service.Active
         }), search);
@@ -508,6 +510,8 @@ public class OwnerPortalService : IOwnerPortalService
             throw new BadRequestException("Price cannot be greater than 1000.");
         }
 
+        ValidateOverlapSettings(request.AllowOverlap, request.MaxParallelAppointments);
+
         var category = await _dbContext.ServiceCategories
             .AsNoTracking()
             .FirstOrDefaultAsync(currentCategory =>
@@ -542,6 +546,8 @@ public class OwnerPortalService : IOwnerPortalService
                 : request.Description.Trim(),
             DurationMinutes = request.DurationMinutes,
             Price = request.Price,
+            AllowOverlap = request.AllowOverlap,
+            MaxParallelAppointments = NormalizeMaxParallelAppointments(request.AllowOverlap, request.MaxParallelAppointments),
             Active = true
         };
 
@@ -558,6 +564,8 @@ public class OwnerPortalService : IOwnerPortalService
             Description = service.Description,
             DurationMinutes = service.DurationMinutes,
             Price = service.Price,
+            AllowOverlap = service.AllowOverlap,
+            MaxParallelAppointments = service.MaxParallelAppointments,
             Active = service.Active
         };
     }
@@ -600,6 +608,8 @@ public class OwnerPortalService : IOwnerPortalService
             : request.Description.Trim();
         service.DurationMinutes = request.DurationMinutes;
         service.Price = request.Price;
+        service.AllowOverlap = request.AllowOverlap;
+        service.MaxParallelAppointments = NormalizeMaxParallelAppointments(request.AllowOverlap, request.MaxParallelAppointments);
         service.Active = request.Active;
 
         await _dbContext.SaveChangesAsync();
@@ -614,6 +624,8 @@ public class OwnerPortalService : IOwnerPortalService
             Description = service.Description,
             DurationMinutes = service.DurationMinutes,
             Price = service.Price,
+            AllowOverlap = service.AllowOverlap,
+            MaxParallelAppointments = service.MaxParallelAppointments,
             Active = service.Active
         };
     }
@@ -1095,6 +1107,8 @@ public class OwnerPortalService : IOwnerPortalService
             throw new BadRequestException("Price cannot be greater than 1000.");
         }
 
+        ValidateOverlapSettings(request.AllowOverlap, request.MaxParallelAppointments);
+
         if (category is null)
         {
             throw new BadRequestException("Service category does not exist.");
@@ -1104,6 +1118,24 @@ public class OwnerPortalService : IOwnerPortalService
         {
             throw new BadRequestException("Service category is not active.");
         }
+    }
+
+    private static void ValidateOverlapSettings(bool allowOverlap, int maxParallelAppointments)
+    {
+        if (allowOverlap && (maxParallelAppointments < 1 || maxParallelAppointments > 3))
+        {
+            throw new BadRequestException("Max parallel appointments must be between 1 and 3.");
+        }
+    }
+
+    private static int NormalizeMaxParallelAppointments(bool allowOverlap, int maxParallelAppointments)
+    {
+        if (!allowOverlap)
+        {
+            return 1;
+        }
+
+        return maxParallelAppointments;
     }
 
     private async Task<OwnerEmployeeListItemDto> SetEmployeeActiveStateAsync(int id, bool active)

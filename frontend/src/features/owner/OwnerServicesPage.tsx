@@ -32,6 +32,8 @@ interface ServiceFormState {
   description: string
   durationMinutes: string
   price: string
+  allowOverlap: boolean
+  maxParallelAppointments: string
   active: boolean
 }
 
@@ -47,6 +49,8 @@ const initialServiceForm: ServiceFormState = {
   description: '',
   durationMinutes: '',
   price: '',
+  allowOverlap: false,
+  maxParallelAppointments: '1',
   active: true,
 }
 
@@ -63,6 +67,8 @@ function mapServiceResponse(service: ServiceDto): OwnerServiceListItem {
     categoryName: service.categoryName,
     durationMinutes: service.durationMinutes,
     price: service.price,
+    allowOverlap: service.allowOverlap,
+    maxParallelAppointments: service.maxParallelAppointments,
     bookingsCount: 0,
     isActive: service.active,
   }
@@ -83,6 +89,8 @@ function mapServiceToForm(service: OwnerServiceListItem): ServiceFormState {
     description: service.description ?? '',
     durationMinutes: String(service.durationMinutes),
     price: String(service.price),
+    allowOverlap: service.allowOverlap,
+    maxParallelAppointments: String(service.maxParallelAppointments),
     active: service.isActive,
   }
 }
@@ -95,6 +103,7 @@ function validateCategoryForm(form: CategoryFormState) {
 function validateServiceForm(form: ServiceFormState) {
   const duration = Number(form.durationMinutes)
   const price = Number(form.price)
+  const maxParallelAppointments = Number(form.maxParallelAppointments)
 
   if (!form.name.trim()) return 'Naziv usluge je obavezan.'
   if (!form.categoryId) return 'Kategorija je obavezna.'
@@ -104,6 +113,14 @@ function validateServiceForm(form: ServiceFormState) {
   }
   if (!Number.isFinite(price) || price < 0 || price > 1000) {
     return 'Cijena mora biti izmedu 0 i 1000 KM.'
+  }
+  if (
+    form.allowOverlap &&
+    (!Number.isInteger(maxParallelAppointments) ||
+      maxParallelAppointments < 1 ||
+      maxParallelAppointments > 3)
+  ) {
+    return 'Maksimalan broj paralelnih termina mora biti izmedu 1 i 3.'
   }
 
   return ''
@@ -191,7 +208,17 @@ function OwnerServicesPage() {
     field: keyof ServiceFormState,
     value: string | boolean,
   ) {
-    setServiceForm((currentForm) => ({ ...currentForm, [field]: value }))
+    setServiceForm((currentForm) => {
+      if (field === 'allowOverlap') {
+        return {
+          ...currentForm,
+          allowOverlap: Boolean(value),
+          maxParallelAppointments: value ? '2' : '1',
+        }
+      }
+
+      return { ...currentForm, [field]: value }
+    })
     setServiceError('')
     setSuccessMessage('')
   }
@@ -332,6 +359,10 @@ function OwnerServicesPage() {
         description: serviceForm.description.trim(),
         durationMinutes: Number(serviceForm.durationMinutes),
         price: Number(serviceForm.price),
+        allowOverlap: serviceForm.allowOverlap,
+        maxParallelAppointments: serviceForm.allowOverlap
+          ? Number(serviceForm.maxParallelAppointments)
+          : 1,
         active: nextActive ?? serviceForm.active,
       }
 
@@ -355,6 +386,8 @@ function OwnerServicesPage() {
         description: payload.description,
         durationMinutes: payload.durationMinutes,
         price: payload.price,
+        allowOverlap: payload.allowOverlap,
+        maxParallelAppointments: payload.maxParallelAppointments,
       })
       const mappedService = mapServiceResponse(createdService)
 
@@ -387,6 +420,10 @@ function OwnerServicesPage() {
         description: service.description ?? null,
         durationMinutes: service.durationMinutes,
         price: service.price,
+        allowOverlap: service.allowOverlap,
+        maxParallelAppointments: service.allowOverlap
+          ? service.maxParallelAppointments
+          : 1,
         active: !service.isActive,
       })
       const mappedService = mapServiceResponse(updatedService)
@@ -616,6 +653,14 @@ function OwnerServicesPage() {
                           label={service.isActive ? 'Aktivna' : 'Neaktivna'}
                           tone={service.isActive ? 'success' : 'neutral'}
                         />
+                        <StatusBadge
+                          label={
+                            service.allowOverlap
+                              ? `Preklapanje: do ${service.maxParallelAppointments} termina`
+                              : 'Bez preklapanja'
+                          }
+                          tone={service.allowOverlap ? 'warning' : 'neutral'}
+                        />
                       </div>
                       <p className="mt-2 line-clamp-2 text-sm leading-6 text-stone-400">
                         {service.description || 'Opis usluge nije dodan.'}
@@ -731,6 +776,39 @@ function OwnerServicesPage() {
                   className="w-full min-w-0 rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-stone-100 outline-none transition focus:border-amber-200/35"
                   placeholder="35"
                 />
+              </label>
+            </div>
+
+            <div className="grid min-w-0 gap-4 rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3">
+              <label className="flex items-center gap-3 text-sm font-semibold text-stone-300">
+                <input
+                  type="checkbox"
+                  checked={serviceForm.allowOverlap}
+                  onChange={(event) =>
+                    handleServiceFieldChange('allowOverlap', event.target.checked)
+                  }
+                  className="h-4 w-4 accent-amber-200"
+                />
+                Dozvoli preklapanje termina
+              </label>
+
+              <label className="grid min-w-0 gap-2 text-sm font-semibold text-stone-300">
+                Maksimalno paralelnih termina
+                <select
+                  value={serviceForm.maxParallelAppointments}
+                  disabled={!serviceForm.allowOverlap}
+                  onChange={(event) =>
+                    handleServiceFieldChange(
+                      'maxParallelAppointments',
+                      event.target.value,
+                    )
+                  }
+                  className="w-full min-w-0 rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-stone-100 outline-none transition disabled:cursor-not-allowed disabled:opacity-60 focus:border-amber-200/35"
+                >
+                  <option value="1">1 termin</option>
+                  <option value="2">2 termina</option>
+                  <option value="3">3 termina</option>
+                </select>
               </label>
             </div>
 

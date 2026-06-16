@@ -3,6 +3,7 @@ using BarberShop.API.Data;
 using BarberShop.API.DTOs.Appointments;
 using BarberShop.API.Entities;
 using BarberShop.API.Exceptions;
+using BarberShop.API.Services.Appointments;
 using BarberShop.API.Services.Notifications;
 using BarberShop.API.Services.Security;
 using Microsoft.EntityFrameworkCore;
@@ -84,7 +85,7 @@ public class AppointmentBookingFacade : IAppointmentBookingFacade
         await EnsureNoTimeOffOverlapAsync(employee.Id, startTime, endTime);
 
         // TODO: Under high parallel booking load, add stronger database protection or an employee-level lock.
-        await EnsureNoAppointmentOverlapAsync(employee.Id, startTime, endTime);
+        await EnsureAppointmentSlotAvailableAsync(employee.Id, employee.ShopId, startTime, endTime, services);
 
         var appointment = new Appointment
         {
@@ -274,18 +275,28 @@ public class AppointmentBookingFacade : IAppointmentBookingFacade
         }
     }
 
-    private async Task EnsureNoAppointmentOverlapAsync(int employeeId, DateTime startTime, DateTime endTime)
+    private async Task EnsureAppointmentSlotAvailableAsync(
+        int employeeId,
+        int shopId,
+        DateTime startTime,
+        DateTime endTime,
+        IReadOnlyCollection<ServiceEntity> services)
     {
-        var overlaps = await _dbContext.Appointments.AnyAsync(appointment =>
-            appointment.EmployeeId == employeeId
-            && (appointment.Status.ToUpper() == AppointmentStatuses.PENDING
-                || appointment.Status.ToUpper() == AppointmentStatuses.CONFIRMED)
-            && startTime < appointment.EndTime
-            && endTime > appointment.StartTime);
+        var overlappingAppointments = await _dbContext.Appointments
+            .AsNoTracking()
+            .Include(appointment => appointment.AppointmentServices)
+            .ThenInclude(appointmentService => appointmentService.Service)
+            .Where(appointment => appointment.EmployeeId == employeeId
+                && appointment.Employee.ShopId == shopId
+                && (appointment.Status.ToUpper() == AppointmentStatuses.PENDING
+                    || appointment.Status.ToUpper() == AppointmentStatuses.CONFIRMED)
+                && startTime < appointment.EndTime
+                && endTime > appointment.StartTime)
+            .ToListAsync();
 
-        if (overlaps)
+        if (!AppointmentOverlapPolicy.IsSlotAvailable(services, overlappingAppointments))
         {
-            throw new BadRequestException("Appointment overlaps with an existing appointment.");
+            throw new BadRequestException("Appointment slot is not available for the selected service overlap settings.");
         }
     }
 

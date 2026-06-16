@@ -18,5 +18,9 @@ public class ServiceDto
 
     public decimal Price { get; set; }
 
+    public bool AllowOverlap { get; set; }
+
+    public int MaxParallelAppointments { get; set; }
+
     public bool Active { get; set; }
 }

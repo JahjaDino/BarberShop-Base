@@ -35,6 +35,8 @@ public class OwnerServiceListItemDto
     public string CategoryName { get; set; } = string.Empty;
     public int DurationMinutes { get; set; }
     public decimal Price { get; set; }
+    public bool AllowOverlap { get; set; }
+    public int MaxParallelAppointments { get; set; }
     public int BookingsCount { get; set; }
     public bool IsActive { get; set; }
 }

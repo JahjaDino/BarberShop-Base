@@ -15,4 +15,8 @@ public class OwnerServiceCreateRequest
     public int DurationMinutes { get; set; }
 
     public decimal Price { get; set; }
+
+    public bool AllowOverlap { get; set; }
+
+    public int MaxParallelAppointments { get; set; } = 1;
 }
