@@ -30,7 +30,7 @@ const initialPasswordForm: ChangePasswordRequest & {
 
 function roleLabel(roles: string[]) {
   if (roles.includes('OWNER')) return 'Vlasnik'
-  if (roles.includes('EMPLOYEE')) return 'Frizer'
+  if (roles.includes('EMPLOYEE')) return 'Frizerka'
   return 'Klijent'
 }
 
@@ -43,7 +43,7 @@ function createProfileForm(user: CurrentUser): ProfileUpdateRequest {
 }
 
 function UserProfilePage({
-  eyebrow = 'Classic Cuts',
+  eyebrow = 'Hair Studio MIMI',
   title = 'Profil',
   subtitle = 'Upravljajte osnovnim informacijama svog računa.',
 }: UserProfilePageProps) {
@@ -258,7 +258,7 @@ function UserProfilePage({
               )}
 
               {profileSuccess && (
-                <p className="rounded-2xl border border-emerald-300/20 bg-emerald-300/10 px-4 py-3 text-sm font-semibold text-emerald-100">
+                <p className="rounded-2xl border border-blue-200/20 bg-blue-950/40 px-4 py-3 text-sm font-semibold text-blue-100">
                   {profileSuccess}
                 </p>
               )}
@@ -328,7 +328,7 @@ function UserProfilePage({
               )}
 
               {passwordSuccess && (
-                <p className="rounded-2xl border border-emerald-300/20 bg-emerald-300/10 px-4 py-3 text-sm font-semibold text-emerald-100">
+                <p className="rounded-2xl border border-blue-200/20 bg-blue-950/40 px-4 py-3 text-sm font-semibold text-blue-100">
                   {passwordSuccess}
                 </p>
               )}

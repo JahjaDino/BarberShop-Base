@@ -18,7 +18,7 @@ const backendMessageTranslations: Record<string, string> = {
   'User with the same email already exists.':
     'Korisnik sa istim emailom vec postoji.',
   'Required EMPLOYEE role does not exist.':
-    'Rola za frizera nije podesena na serveru.',
+    'Rola za frizerku nije podesena na serveru.',
   'Current user does not have access to an owner shop.':
     'Nemate pristup vlasnickom salonu.',
   'Working hours overlap with existing working hours.':
@@ -32,9 +32,9 @@ const backendMessageTranslations: Record<string, string> = {
   'Day of week must be between 0 and 6.':
     'Dan u sedmici nije validan.',
   'Employee does not belong to your shop.':
-    'Frizer ne pripada vašem salonu.',
-  'Employee does not exist.': 'Frizer ne postoji.',
-  'Employee is not active.': 'Frizer nije aktivan.',
+    'Frizerka ne pripada vašem salonu.',
+  'Employee does not exist.': 'Frizerka ne postoji.',
+  'Employee is not active.': 'Frizerka nije aktivna.',
 }
 
 export class EmployeesApiError extends Error {
@@ -173,7 +173,7 @@ function normalizeWorkingHourUpdatePayload(
 
 async function readErrorMessage(response: Response) {
   if (response.status === 403) {
-    return 'Nemate dozvolu za upravljanje frizerima ovog salona.'
+    return 'Nemate dozvolu za upravljanje frizerkama ovog salona.'
   }
 
   try {

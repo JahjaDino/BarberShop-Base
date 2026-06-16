@@ -6,7 +6,7 @@ interface StatusBadgeProps {
 }
 
 const toneClasses: Record<StatusTone, string> = {
-  success: 'border-emerald-300/20 bg-emerald-300/10 text-emerald-100',
+  success: 'border-amber-200/25 bg-amber-100/10 text-amber-100',
   warning: 'border-amber-200/25 bg-amber-100/10 text-amber-100',
   neutral: 'border-stone-400/15 bg-stone-400/10 text-stone-200',
   danger: 'border-red-300/20 bg-red-400/10 text-red-200',

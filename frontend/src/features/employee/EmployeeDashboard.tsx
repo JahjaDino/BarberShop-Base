@@ -262,8 +262,8 @@ function EmployeeDashboard() {
   return (
     <div className="grid gap-6">
       <PageHeader
-        eyebrow="Frizerski prostor"
-        title="Dobrodošli u frizerski prostor"
+        eyebrow="Studio prostor"
+        title="Dobrodošli u studio prostor"
         subtitle="Pratite današnje termine, raspored i odsustva."
       />
 

@@ -31,7 +31,9 @@ function PopularServiceCard({ service }: { service: ClientServiceCardDto }) {
       <p className="break-words text-xs font-semibold uppercase tracking-[0.18em] text-amber-200/65 sm:tracking-[0.22em]">
         {service.categoryName || 'Usluga'}
       </p>
-      <h3 className="mt-3 break-words text-xl font-black text-stone-50">{service.name}</h3>
+      <h3 className="mt-3 break-words text-xl font-black text-stone-50">
+        {service.name}
+      </h3>
       <p className="mt-3 flex-1 break-words text-sm leading-6 text-stone-400">
         {service.description || 'Opis usluge nije unesen.'}
       </p>
@@ -42,7 +44,7 @@ function PopularServiceCard({ service }: { service: ClientServiceCardDto }) {
         </span>
       </div>
       <Link to="/app/book-appointment" className={`mt-5 ${buttonStyles.ghost}`}>
-        Zakaži
+        Zakazi
       </Link>
     </AppCard>
   )
@@ -97,15 +99,15 @@ function ClientDashboard() {
 
       <section className="min-w-0 rounded-[28px] border border-amber-200/15 bg-black/30 p-4 shadow-[0_0_45px_rgba(0,0,0,0.26)] backdrop-blur-xl sm:rounded-[32px] sm:p-6 lg:p-8">
         <h1 className="max-w-3xl break-words text-3xl font-black leading-tight text-stone-50 sm:text-4xl">
-          Dobrodošli nazad
+          Dobrodosli nazad
         </h1>
         <p className="mt-4 max-w-2xl break-words text-sm leading-7 text-stone-300 sm:text-base sm:leading-8">
-          Zakažite novi termin i pratite svoje rezervacije u Classic Cuts
+          Zakazite novi termin i pratite svoje rezervacije u Hair Studio MIMI
           aplikaciji.
         </p>
         <div className="mt-6 flex flex-col gap-3 sm:flex-row">
           <Link to="/app/book-appointment" className={buttonStyles.primary}>
-            Zakaži termin
+            Zakazi termin
           </Link>
           <Link to="/app/my-appointments" className={buttonStyles.secondary}>
             Moji termini
@@ -122,7 +124,7 @@ function ClientDashboard() {
       {isLoading ? (
         <SectionCard>
           <div className="rounded-2xl border border-amber-200/10 bg-white/[0.035] p-5 text-sm text-stone-300">
-            Učitavanje pregleda...
+            Ucitavanje pregleda...
           </div>
         </SectionCard>
       ) : (
@@ -139,8 +141,8 @@ function ClientDashboard() {
                       {dashboard.nextAppointment.serviceName}
                     </h2>
                     <p className="mt-3 text-sm leading-6 text-stone-400">
-                      {dashboard.nextAppointment.employeeName} ·{' '}
-                      {formatDate(dashboard.nextAppointment.date)} ·{' '}
+                      {dashboard.nextAppointment.employeeName} -{' '}
+                      {formatDate(dashboard.nextAppointment.date)} -{' '}
                       {formatTime(dashboard.nextAppointment.time)}
                     </p>
                   </>
@@ -150,8 +152,8 @@ function ClientDashboard() {
                       Trenutno nemate zakazan termin.
                     </h2>
                     <p className="mt-3 max-w-2xl text-sm leading-6 text-stone-400">
-                      Kada rezervacija bude potvrđena, ovdje ćete vidjeti
-                      uslugu, frizera, datum i vrijeme dolaska.
+                      Kada rezervacija bude potvrdjena, ovdje cete vidjeti
+                      uslugu, frizerku, datum i vrijeme dolaska.
                     </p>
                   </>
                 )}
@@ -197,7 +199,7 @@ function ClientDashboard() {
               ) : (
                 <EmptyState
                   title="Nema usluga za prikaz."
-                  description="Kada salon doda aktivne usluge, bit će prikazane ovdje."
+                  description="Kada salon doda aktivne usluge, bit ce prikazane ovdje."
                   actionLabel="Pregledaj usluge"
                   actionTo="/app/services"
                 />

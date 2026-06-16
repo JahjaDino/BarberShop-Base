@@ -58,7 +58,7 @@ function BookingSummary({
       <dl className="mt-6 grid gap-3 sm:grid-cols-2 xl:grid-cols-6">
         {[
           ['Usluga', service?.name ?? 'Nije odabrano'],
-          ['Frizer', barber?.name ?? 'Nije odabrano'],
+          ['Frizerka', barber?.name ?? 'Nije odabrano'],
           ['Datum', date ? `${date.day}, ${date.label}` : 'Nije odabrano'],
           ['Vrijeme', time || 'Nije odabrano'],
           ['Cijena', service?.price ?? 'Nije odabrano'],
@@ -83,8 +83,8 @@ function BookingSummary({
       )}
 
       {isPrepared && message && (
-        <div className="mt-5 rounded-2xl border border-emerald-300/20 bg-emerald-300/10 p-4">
-          <p className="font-bold text-emerald-100">{message}</p>
+        <div className="mt-5 rounded-2xl border border-blue-200/20 bg-blue-950/40 p-4">
+          <p className="font-bold text-blue-100">{message}</p>
         </div>
       )}
     </section>

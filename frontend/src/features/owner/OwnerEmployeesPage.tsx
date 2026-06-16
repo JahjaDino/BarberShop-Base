@@ -181,7 +181,7 @@ function OwnerEmployeesPage() {
       setError(
         err instanceof Error
           ? err.message
-          : 'Greška prilikom učitavanja frizera.',
+          : 'Greška prilikom učitavanja frizerki.',
       )
     } finally {
       setIsLoading(false)
@@ -272,10 +272,10 @@ function OwnerEmployeesPage() {
         setWorkingHourRows(createDefaultWorkingHourRows())
       }
       setForm(initialForm)
-      setSuccess('Frizer je uspješno dodan.')
+      setSuccess('Frizerka je uspješno dodana.')
     } catch (err) {
       setError(
-        err instanceof Error ? err.message : 'Greška prilikom dodavanja frizera.',
+        err instanceof Error ? err.message : 'Greška prilikom dodavanja frizerke.',
       )
     } finally {
       setIsSubmitting(false)
@@ -306,7 +306,7 @@ function OwnerEmployeesPage() {
 
   async function handleSaveWorkingHours() {
     if (!selectedEmployee) {
-      setWorkingHoursError('Odaberite frizera prije spremanja radnog vremena.')
+      setWorkingHoursError('Odaberite frizerku prije spremanja radnog vremena.')
       return
     }
 
@@ -388,18 +388,18 @@ function OwnerEmployeesPage() {
     <div className="grid gap-6">
       <PageHeader
         eyebrow="Vlasnički prostor"
-        title="Frizeri"
-        subtitle="Upravljajte frizerima koji rade u salonu."
+        title="Frizerke"
+        subtitle="Upravljajte frizerkama koje rade u salonu."
       />
 
       <div className="grid min-w-0 gap-6 xl:grid-cols-[minmax(320px,420px)_minmax(0,1fr)]">
         <div className="grid content-start gap-6">
           <SectionCard>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-amber-200/70">
-              Novi frizer
+              Nova frizerka
             </p>
             <h2 className="mt-3 text-2xl font-black text-stone-50">
-              Dodaj frizera
+              Dodaj frizerku
             </h2>
 
             <form onSubmit={handleSubmit} className="mt-6 grid gap-4">
@@ -436,7 +436,7 @@ function OwnerEmployeesPage() {
                   value={form.email}
                   onChange={(event) => handleChange('email', event.target.value)}
                   className="w-full min-w-0 rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-stone-100 outline-none transition focus:border-amber-200/35"
-                  placeholder="frizer@classiccuts.ba"
+                  placeholder="frizerka@hairstudiomimi.ba"
                 />
               </label>
 
@@ -460,7 +460,7 @@ function OwnerEmployeesPage() {
                     handleChange('position', event.target.value)
                   }
                   className="w-full min-w-0 rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-stone-100 outline-none transition focus:border-amber-200/35"
-                  placeholder="npr. Senior frizer"
+                  placeholder="npr. Senior frizerka"
                 />
               </label>
 
@@ -507,7 +507,7 @@ function OwnerEmployeesPage() {
               )}
 
               {success && (
-                <div className="rounded-2xl border border-emerald-300/20 bg-emerald-300/10 px-4 py-3 text-sm font-semibold text-emerald-100">
+                <div className="rounded-2xl border border-blue-200/20 bg-blue-950/40 px-4 py-3 text-sm font-semibold text-blue-100">
                   {success}
                 </div>
               )}
@@ -517,7 +517,7 @@ function OwnerEmployeesPage() {
                 disabled={isSubmitting}
                 className={buttonStyles.primary}
               >
-                {isSubmitting ? 'Dodavanje...' : 'Dodaj frizera'}
+                {isSubmitting ? 'Dodavanje...' : 'Dodaj frizerku'}
               </button>
             </form>
           </SectionCard>
@@ -526,7 +526,7 @@ function OwnerEmployeesPage() {
             <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <div>
                 <p className="text-xs font-semibold uppercase tracking-[0.28em] text-amber-200/70">
-                  Aktivni frizeri
+                  Aktivne frizerke
                 </p>
                 <h2 className="mt-3 text-2xl font-black text-stone-50">
                   Radno vrijeme
@@ -544,13 +544,13 @@ function OwnerEmployeesPage() {
 
             {isLoading ? (
               <p className="mt-6 rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-sm text-stone-300">
-                Učitavanje frizera...
+                Učitavanje frizerki...
               </p>
             ) : activeEmployees.length === 0 ? (
               <div className="mt-6">
                 <EmptyState
-                  title="Nema aktivnih frizera za podešavanje radnog vremena."
-                  description="Dodajte ili aktivirajte frizera prije podešavanja radnog vremena."
+                  title="Nema aktivnih frizerki za podešavanje radnog vremena."
+                  description="Dodajte ili aktivirajte frizerku prije podešavanja radnog vremena."
                 />
               </div>
             ) : (
@@ -607,7 +607,7 @@ function OwnerEmployeesPage() {
               <h2 className="mt-3 break-words text-2xl font-black text-stone-50">
                 {selectedEmployee
                   ? selectedEmployee.fullName
-                  : 'Odaberite frizera'}
+                  : 'Odaberite frizerku'}
               </h2>
               <p className="mt-2 max-w-2xl text-sm leading-6 text-stone-400">
                 Radno vrijeme direktno utiče na slobodne termine u booking toku.
@@ -629,8 +629,8 @@ function OwnerEmployeesPage() {
           {!workingHoursPanelOpen || !selectedEmployee ? (
             <div className="mt-6">
               <EmptyState
-                title="Odaberite frizera."
-                description="Nakon odabira frizera možete urediti njegovo radno vrijeme."
+                title="Odaberite frizerku."
+                description="Nakon odabira frizerke možete urediti njeno radno vrijeme."
               />
             </div>
           ) : isLoadingWorkingHours ? (
@@ -646,7 +646,7 @@ function OwnerEmployeesPage() {
               )}
 
               {workingHoursSuccess && (
-                <div className="mt-6 rounded-2xl border border-emerald-300/20 bg-emerald-300/10 px-4 py-3 text-sm font-semibold text-emerald-100">
+                <div className="mt-6 rounded-2xl border border-blue-200/20 bg-blue-950/40 px-4 py-3 text-sm font-semibold text-blue-100">
                   {workingHoursSuccess}
                 </div>
               )}

@@ -48,7 +48,7 @@ function MainFrame() {
   }
 
   return (
-    <main className="min-h-screen overflow-x-hidden bg-[#06110d] text-stone-100">
+    <main className="min-h-screen overflow-x-hidden bg-[#050b1a] text-stone-100">
       <div className="min-h-screen min-w-0 lg:pl-[280px]">
         <AppSidebar
           navigationGroups={navigationGroups}
@@ -56,7 +56,7 @@ function MainFrame() {
         />
 
         <section className="relative min-w-0 overflow-hidden">
-          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_8%,rgba(245,213,145,0.14),transparent_28%),radial-gradient(circle_at_80%_18%,rgba(34,197,94,0.14),transparent_26%),linear-gradient(135deg,#07110d_0%,#0b1711_46%,#030504_100%)]" />
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_8%,rgba(245,213,145,0.14),transparent_28%),radial-gradient(circle_at_80%_18%,rgba(30,64,175,0.18),transparent_26%),linear-gradient(135deg,#050b1a_0%,#071126_46%,#020617_100%)]" />
           <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.03)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.03)_1px,transparent_1px)] bg-[size:64px_64px] opacity-20" />
 
           <div className="relative flex min-h-screen min-w-0 flex-col">

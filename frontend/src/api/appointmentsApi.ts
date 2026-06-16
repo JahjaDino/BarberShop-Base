@@ -105,7 +105,7 @@ const backendMessageTranslations: Record<string, string> = {
   'Appointment cannot be booked in the past.':
     'Termin nije moguće zakazati u prošlosti.',
   'Employee is not available for the selected time.':
-    'Frizer nije dostupan u odabranom terminu.',
+    'Frizerka nije dostupna u odabranom terminu.',
   'Selected time is outside working hours.':
     'Odabrano vrijeme je izvan radnog vremena.',
   'Appointment overlaps with another appointment.':

@@ -184,7 +184,7 @@ function EmployeeAppointmentsPage() {
     setError('')
 
     try {
-      await cancelAppointment(appointmentId, 'Termin je odbijen od frizera.')
+      await cancelAppointment(appointmentId, 'Termin je odbijen od frizerke.')
       await loadAppointments()
     } catch (requestError) {
       setError(
@@ -203,7 +203,7 @@ function EmployeeAppointmentsPage() {
   return (
     <div className="grid gap-6">
       <PageHeader
-        eyebrow="Frizerski prostor"
+        eyebrow="Studio prostor"
         title="Dodijeljeni termini"
         subtitle="Pregledajte zahtjeve, potvrđene termine i historiju termina."
       />

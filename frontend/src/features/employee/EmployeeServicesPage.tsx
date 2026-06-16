@@ -54,7 +54,7 @@ function EmployeeServicesPage() {
   return (
     <div className="grid gap-6">
       <PageHeader
-        eyebrow="Frizerski prostor"
+        eyebrow="Studio prostor"
         title="Usluge"
         subtitle="Pregled aktivnih usluga dostupnih u vasem salonu."
       />

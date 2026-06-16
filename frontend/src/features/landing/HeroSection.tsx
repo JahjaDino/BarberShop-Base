@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import barberShopImage from '../../assets/optimized/barberShop1-hero.webp'
+import hairStudioImage from '../../assets/optimized/barberShop1-hero.webp'
 import LoginCard from './LoginCard'
 
 function HeroSection() {
@@ -35,35 +35,36 @@ function HeroSection() {
   return (
     <section id="home" className="relative overflow-hidden">
       <img
-        src={barberShopImage}
-        alt="Classic Cuts Barbershop"
+        src={hairStudioImage}
+        alt="Hair Studio MIMI salon"
         className="absolute inset-0 h-full w-full object-cover"
       />
 
-      <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/70" />
-      <div className="absolute inset-0 bg-emerald-950/15" />
+      <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-blue-950/45 to-black/70" />
+      <div className="absolute inset-0 bg-blue-950/25" />
 
       <div className="relative mx-auto grid min-h-screen max-w-[1450px] items-center gap-10 px-4 py-8 sm:px-8 sm:py-10 lg:grid-cols-[minmax(0,720px)_390px] lg:justify-between lg:px-12 xl:px-16">
         <div className="min-w-0 max-w-[760px]">
           <p className="break-words text-xs font-semibold uppercase tracking-[0.22em] text-amber-200/80 sm:tracking-[0.32em]">
-            Moderni barbershop
+            Moderan hair studio
           </p>
 
           <h1 className="mt-5 break-words text-4xl font-black leading-[0.98] text-stone-50 sm:text-6xl lg:text-7xl">
-            VIŠE OD FRIZURE.
-            <span className="mt-2 block text-amber-100">DOŽIVLJAJ.</span>
+            Hair Studio MIMI.
+            <span className="mt-2 block text-amber-100">KOSA KOJA SIJA.</span>
           </h1>
 
           <p className="mt-6 max-w-2xl text-base leading-8 text-stone-200 sm:text-lg">
-            Rezerviši svog frizera, prati termine i uštedi vrijeme u elegantnoj
-            aplikaciji napravljenoj za moderni barbershop.
+            Rezervisite termin za frizuru, farbanje, pramenove i njegu kose u
+            salonu koji spaja dugogodisnje iskustvo, profesionalan tim i
+            individualan pristup svakoj klijentici.
           </p>
 
           <div className="mt-8 flex flex-col gap-3 sm:flex-row">
             <button
               type="button"
               onClick={() => focusCard('login')}
-              className="rounded-2xl bg-amber-200 px-6 py-4 text-center text-sm font-bold uppercase tracking-[0.16em] text-emerald-950 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#d6b56c] hover:shadow-lg sm:tracking-[0.2em]"
+              className="rounded-2xl bg-amber-200 px-6 py-4 text-center text-sm font-bold uppercase tracking-[0.16em] text-blue-950 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#d6b56c] hover:shadow-lg sm:tracking-[0.2em]"
             >
               Prijavi se
             </button>
@@ -81,7 +82,7 @@ function HeroSection() {
             {[
               ['4.9', 'Ocjena'],
               ['2k+', 'Termina'],
-              ['3', 'Frizera'],
+              ['4', 'Frizerke'],
             ].map(([value, label]) => (
               <div
                 key={label}

@@ -456,7 +456,7 @@ function OwnerServicesPage() {
       />
 
       {successMessage && (
-        <p className="rounded-2xl border border-emerald-300/20 bg-emerald-300/10 px-4 py-3 text-sm font-semibold text-emerald-100">
+        <p className="rounded-2xl border border-blue-200/20 bg-blue-950/40 px-4 py-3 text-sm font-semibold text-blue-100">
           {successMessage}
         </p>
       )}
@@ -725,7 +725,7 @@ function OwnerServicesPage() {
                   handleServiceFieldChange('name', event.target.value)
                 }
                 className="w-full min-w-0 rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-stone-100 outline-none transition focus:border-amber-200/35"
-                placeholder="npr. Fade sisanje"
+                placeholder="npr. Feniranje i njega"
               />
             </label>
 

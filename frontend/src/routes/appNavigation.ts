@@ -6,7 +6,7 @@ export const clientNavigationGroups: NavigationGroup[] = [
     label: 'Glavno',
     items: [
       { label: 'Pregled', path: '/app/dashboard' },
-      { label: 'Zakaži termin', path: '/app/book-appointment' },
+      { label: 'Zakazi termin', path: '/app/book-appointment' },
       { label: 'Moji termini', path: '/app/my-appointments' },
     ],
   },
@@ -29,14 +29,14 @@ export const ownerNavigationGroups: NavigationGroup[] = [
     label: 'Salon',
     items: [
       { label: 'Termini', path: '/app/owner/appointments' },
-      { label: 'Frizeri', path: '/app/owner/employees' },
+      { label: 'Frizerke', path: '/app/owner/employees' },
       { label: 'Odsustva', path: '/app/owner/time-off' },
       { label: 'Usluge', path: '/app/owner/services' },
     ],
   },
   {
     label: 'Profil',
-    items: [{ label: 'Profil vlasnika', path: '/app/owner/settings' }],
+    items: [{ label: 'Profil vlasnice', path: '/app/owner/settings' }],
   },
 ]
 
@@ -59,21 +59,21 @@ export const employeeNavigationGroups: NavigationGroup[] = [
   },
   {
     label: 'Profil',
-    items: [{ label: 'Profil frizera', path: '/app/employee/profile' }],
+    items: [{ label: 'Profil frizerke', path: '/app/employee/profile' }],
   },
 ]
 
 export function getNavigationForRole(role: UserRole) {
   if (role === 'OWNER') {
     return {
-      workspaceLabel: 'Vlasnički prostor',
+      workspaceLabel: 'Vlasnicki prostor',
       navigationGroups: ownerNavigationGroups,
     }
   }
 
   if (role === 'EMPLOYEE') {
     return {
-      workspaceLabel: 'Frizerski prostor',
+      workspaceLabel: 'Studio prostor',
       navigationGroups: employeeNavigationGroups,
     }
   }
@@ -87,47 +87,47 @@ export function getNavigationForRole(role: UserRole) {
 export const pageMetadata: Record<string, PageMetadata> = {
   '/app/dashboard': {
     title: 'Pregled',
-    subtitle: 'Vaš prostor za termine, usluge i brze rezervacije.',
+    subtitle: 'Vas prostor za termine, usluge i brze rezervacije.',
   },
   '/app/book-appointment': {
-    title: 'Zakaži termin',
-    subtitle: 'Odaberite uslugu, frizera, datum i slobodan termin.',
+    title: 'Zakazi termin',
+    subtitle: 'Odaberite uslugu, frizerku, datum i slobodan termin.',
   },
   '/app/my-appointments': {
     title: 'Moji termini',
-    subtitle: 'Pregled nadolazećih i prethodnih rezervacija.',
+    subtitle: 'Pregled nadolazecih i prethodnih rezervacija.',
   },
   '/app/services': {
     title: 'Usluge',
-    subtitle: 'Katalog barbershop usluga i kategorija.',
+    subtitle: 'Katalog usluga za frizure, farbanje, pramenove i njegu kose.',
   },
   '/app/profile': {
     title: 'Moj profil',
-    subtitle: 'Upravljajte ličnim podacima i sigurnošću svog računa.',
+    subtitle: 'Upravljajte licnim podacima i sigurnoscu svog racuna.',
   },
   '/app/owner/dashboard': {
     title: 'Pregled salona',
-    subtitle: 'Pratite termine, frizere i poslovanje salona na jednom mjestu.',
+    subtitle: 'Pratite termine, frizerke i poslovanje salona na jednom mjestu.',
   },
   '/app/owner/appointments': {
     title: 'Termini',
     subtitle: 'Pregled i organizacija termina u salonu.',
   },
   '/app/owner/employees': {
-    title: 'Frizeri',
-    subtitle: 'Tim, dostupnost i raspored frizera.',
+    title: 'Frizerke',
+    subtitle: 'Tim, dostupnost i raspored frizerki.',
   },
   '/app/owner/time-off': {
     title: 'Odsustva',
-    subtitle: 'Pregled i obrada zahtjeva frizera za odsustvo.',
+    subtitle: 'Pregled i obrada zahtjeva frizerki za odsustvo.',
   },
   '/app/owner/services': {
     title: 'Usluge salona',
     subtitle: 'Upravljanje ponudom, trajanjem i cijenama usluga.',
   },
   '/app/owner/settings': {
-    title: 'Profil vlasnika',
-    subtitle: 'Upravljajte ličnim podacima i sigurnošću vlasničkog računa.',
+    title: 'Profil vlasnice',
+    subtitle: 'Upravljajte licnim podacima i sigurnoscu vlasnickog racuna.',
   },
   '/app/employee/dashboard': {
     title: 'Moj radni dan',
@@ -135,7 +135,7 @@ export const pageMetadata: Record<string, PageMetadata> = {
   },
   '/app/employee/schedule': {
     title: 'Moj raspored',
-    subtitle: 'Dnevni i sedmični pregled radnog vremena.',
+    subtitle: 'Dnevni i sedmicni pregled radnog vremena.',
   },
   '/app/employee/appointments': {
     title: 'Dodijeljeni termini',
@@ -150,7 +150,7 @@ export const pageMetadata: Record<string, PageMetadata> = {
     subtitle: 'Usluge koje obavljate u salonu.',
   },
   '/app/employee/profile': {
-    title: 'Profil frizera',
-    subtitle: 'Upravljajte ličnim podacima i sigurnošću svog računa.',
+    title: 'Profil frizerke',
+    subtitle: 'Upravljajte licnim podacima i sigurnoscu svog racuna.',
   },
 }

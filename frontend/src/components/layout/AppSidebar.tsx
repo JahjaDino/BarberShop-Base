@@ -12,11 +12,11 @@ function AppSidebar({ navigationGroups, workspaceLabel }: AppSidebarProps) {
       <div className="shrink-0">
         <div className="flex min-w-0 items-center gap-3">
           <span className="grid h-11 w-11 place-items-center rounded-2xl border border-amber-200/25 bg-amber-100/10 text-lg font-black text-amber-100 shadow-[0_0_30px_rgba(245,213,145,0.12)]">
-            CC
+            MM
           </span>
           <span className="min-w-0">
             <span className="block truncate text-lg font-semibold tracking-wide text-stone-50">
-              Classic Cuts
+              Hair Studio MIMI
             </span>
             <span className="block truncate text-xs uppercase tracking-[0.2em] text-amber-200/70 lg:tracking-[0.28em]">
               {workspaceLabel}
@@ -53,7 +53,7 @@ function AppSidebar({ navigationGroups, workspaceLabel }: AppSidebarProps) {
       </nav>
 
       <div className="mt-5 hidden shrink-0 border-t border-amber-200/10 pt-5 text-xs leading-5 text-stone-500 lg:block">
-        Classic Cuts aplikacija
+        Hair Studio MIMI aplikacija
       </div>
     </aside>
   )

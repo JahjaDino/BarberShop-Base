@@ -157,7 +157,7 @@ function appendSearchParams(
 
 async function readErrorMessage(response: Response) {
   if (response.status === 403) {
-    return 'Nemate pristup frizerskom prostoru.'
+    return 'Nemate pristup studio prostoru.'
   }
 
   try {

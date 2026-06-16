@@ -97,7 +97,7 @@ function AppSelect<T extends string = string>({
         <div
           id={listId}
           role="listbox"
-          className="absolute left-0 right-0 top-full z-30 mt-2 overflow-hidden rounded-2xl border border-amber-200/15 bg-[#07110d] p-1 shadow-[0_18px_45px_rgba(0,0,0,0.42)]"
+          className="absolute left-0 right-0 top-full z-30 mt-2 overflow-hidden rounded-2xl border border-amber-200/15 bg-[#071126] p-1 shadow-[0_18px_45px_rgba(0,0,0,0.42)]"
         >
           {options.map((option) => {
             const isSelected = option.value === value

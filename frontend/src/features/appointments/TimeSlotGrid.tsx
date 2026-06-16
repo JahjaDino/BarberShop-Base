@@ -18,7 +18,7 @@ function TimeSlotGrid({ slots, selectedTime, onSelect }: TimeSlotGridProps) {
 
       {slots.length === 0 && (
         <div className="mt-5 rounded-2xl border border-amber-200/10 bg-black/20 p-4 text-sm leading-6 text-stone-400">
-          Odaberite uslugu, frizera i datum kako biste vidjeli slobodne termine.
+          Odaberite uslugu, frizerku i datum kako biste vidjeli slobodne termine.
         </div>
       )}
 
@@ -38,7 +38,7 @@ function TimeSlotGrid({ slots, selectedTime, onSelect }: TimeSlotGridProps) {
                   ? 'cursor-not-allowed border-stone-700 bg-stone-900/60 text-stone-600'
                   : isSelected
                     ? 'border-amber-200/50 bg-[linear-gradient(135deg,rgba(120,84,28,0.92),rgba(214,181,108,0.72))] text-amber-50'
-                    : 'border-emerald-300/15 bg-emerald-950/30 text-emerald-100 hover:border-amber-200/40 hover:bg-amber-100/10 hover:text-amber-100'
+                    : 'border-blue-200/15 bg-blue-950/35 text-blue-100 hover:border-amber-200/40 hover:bg-amber-100/10 hover:text-amber-100'
               }`}
             >
               <span className="block">{slot.value}</span>

@@ -1,39 +1,39 @@
 const highlights = [
   {
-    icon: '✂️',
-    title: 'Iskusni barberi',
+    icon: '*',
+    title: 'Iskusan tim frizerki',
     description:
-      'Profesionalni tim posvećen detaljima i stilu svakog klijenta.',
+      'Cetiri zaposlenice posvecene detaljima, njezi i stilu svake klijentice.',
   },
   {
-    icon: '📅',
+    icon: '+',
     title: 'Brzo zakazivanje',
     description:
-      'Rezervišite termin u nekoliko klikova nakon prijave u aplikaciju.',
+      'Rezervisite termin u nekoliko klikova nakon prijave u aplikaciju.',
   },
   {
-    icon: '🔔',
+    icon: '!',
     title: 'Podsjetnici na termin',
     description:
-      'Aplikacija vas podsjeća na rezervaciju kako biste lakše organizovali dan.',
+      'Aplikacija vas podsjeca na rezervaciju kako biste lakse organizovali dan.',
   },
   {
-    icon: '💈',
-    title: 'Moderne usluge',
+    icon: 'M',
+    title: 'Moderne usluge za kosu',
     description:
-      'Klasično šišanje, fade stilovi i precizno uređivanje brade.',
+      'Zenske i muske frizure, farbanje, pramenovi i profesionalna njega kose.',
   },
   {
-    icon: '⭐',
-    title: 'Provjeren kvalitet',
+    icon: '#',
+    title: 'Kvalitetni proizvodi',
     description:
-      'Dosljedna usluga, uredan pristup i zadovoljni klijenti koji se vraćaju.',
+      'Radimo sa pazljivo odabranim proizvodima za njegovan i postojan rezultat.',
   },
   {
-    icon: '☕',
+    icon: '~',
     title: 'Prijatna atmosfera',
     description:
-      'Ugodan ambijent, pažljiva usluga i osjećaj da ste na pravom mjestu.',
+      'Ugodan ambijent, pazljiva usluga i osjecaj da ste na pravom mjestu.',
   },
 ]
 
@@ -51,26 +51,28 @@ function AboutSection() {
             </p>
 
             <h2 className="mt-3 max-w-4xl text-3xl font-black leading-tight text-stone-50 sm:text-4xl">
-              Classic Cuts je mjesto gdje stil postaje iskustvo.
+              Hair Studio MIMI je mjesto gdje njega kose postaje iskustvo.
             </h2>
 
             <p className="mt-4 max-w-3xl text-base leading-7 text-stone-300">
-              Classic Cuts je moderan barbershop za klijente koji žele preciznu
-              uslugu, ugodan ambijent i jednostavan sistem rezervacije. Naš cilj
-              je da svaki dolazak bude opušten, tačan i pažljivo izveden.
+              Hair Studio MIMI je moderan hair studio za klijentice i klijente
+              koji zele profesionalnu njegu, kvalitetne proizvode i jednostavan
+              sistem rezervacije. MIMI je vlasnica i glavna frizerka, uz tim
+              od 4 frizerke koje svakom terminu pristupaju pazljivo i licno.
             </p>
           </div>
 
           <aside className="rounded-[32px] border border-amber-200/10 bg-white/[0.03] p-5 shadow-[0_0_35px_rgba(0,0,0,0.24)] backdrop-blur">
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-amber-200/70">
-              Naš cilj
+              Nas cilj
             </p>
             <h3 className="mt-3 text-xl font-black leading-tight text-stone-50">
-              Jednostavan termin. Profesionalna usluga. Vrhunski izgled.
+              Individualan pristup. Profesionalna njega. Vrhunski izgled.
             </h3>
             <p className="mt-3 text-sm leading-6 text-stone-300">
-              Želimo da svaki klijent zna kada dolazi, kome dolazi i da iz
-              salona izlazi sa stilom koji izgleda prirodno i uredno.
+              Zelimo da svaka klijentica zna kada dolazi, kome dolazi i da iz
+              salona izlazi sa frizurom koja izgleda njegovano, moderno i
+              prirodno.
             </p>
           </aside>
         </div>
@@ -81,7 +83,7 @@ function AboutSection() {
               key={item.title}
               className="rounded-2xl border border-amber-200/10 bg-white/[0.03] p-5 backdrop-blur transition-all duration-300 hover:border-amber-200/20 hover:bg-white/[0.04]"
             >
-              <div className="grid h-10 w-10 place-items-center rounded-full bg-amber-200 text-lg text-emerald-950">
+              <div className="grid h-10 w-10 place-items-center rounded-full bg-amber-200 text-lg font-black text-blue-950">
                 {item.icon}
               </div>
 

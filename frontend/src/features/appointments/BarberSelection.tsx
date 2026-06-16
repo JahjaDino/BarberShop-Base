@@ -17,12 +17,12 @@ function BarberSelection({
         Korak 2
       </p>
       <h2 className="mt-3 text-2xl font-black text-stone-50">
-        Odaberite frizera
+        Odaberite frizerku
       </h2>
 
       {barbers.length === 0 ? (
         <div className="mt-5 rounded-2xl border border-amber-200/10 bg-black/25 p-4 text-sm text-stone-300">
-          Trenutno nema dostupnih frizera za ovaj salon.
+          Trenutno nema dostupnih frizerki za ovaj salon.
         </div>
       ) : (
         <div className="mt-5 grid min-w-0 gap-3 md:grid-cols-3">

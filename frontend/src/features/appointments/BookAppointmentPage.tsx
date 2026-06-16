@@ -205,7 +205,7 @@ function BookAppointmentPage() {
         const barberOptions = publicEmployees.map((employee) => ({
           id: String(employee.employeeId),
           name: employee.fullName,
-          specialty: employee.specialization || 'Frizer',
+          specialty: employee.specialization || 'Frizerka',
         }))
 
         if (!isMounted) return
@@ -223,7 +223,7 @@ function BookAppointmentPage() {
           setBarbers([])
           setSelectedBarberId('')
           setBarbersError(
-            'Frizeri trenutno nisu dostupni. Pokušajte ponovo kasnije.',
+            'Frizerke trenutno nisu dostupne. Pokušajte ponovo kasnije.',
           )
         }
       } finally {
@@ -372,7 +372,7 @@ function BookAppointmentPage() {
           Zakažite termin u nekoliko koraka
         </h1>
         <p className="mt-5 max-w-2xl break-words text-sm leading-7 text-stone-300 sm:text-base sm:leading-8">
-          Odaberite uslugu, frizera i slobodan termin. Usluge se sada učitavaju
+          Odaberite uslugu, frizerku i slobodan termin. Usluge se sada učitavaju
           iz backend kataloga salona.
         </p>
       </section>
@@ -405,7 +405,7 @@ function BookAppointmentPage() {
 
       {isLoadingBarbers && (
         <section className="rounded-[28px] border border-amber-200/10 bg-white/[0.035] p-5 text-sm text-stone-300 backdrop-blur">
-          Učitavanje frizera...
+          Učitavanje frizerki...
         </section>
       )}
 

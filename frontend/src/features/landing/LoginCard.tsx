@@ -236,7 +236,7 @@ function LoginCard({ mode, highlighted = false }: LoginCardProps) {
           </h2>
         </div>
 
-        <span className="rounded-full border border-emerald-300/20 bg-emerald-300/10 px-3 py-1 text-xs font-medium text-emerald-100">
+        <span className="rounded-full border border-blue-200/20 bg-blue-950/40 px-3 py-1 text-xs font-medium text-blue-100">
           Online
         </span>
       </div>
@@ -395,7 +395,7 @@ function LoginCard({ mode, highlighted = false }: LoginCardProps) {
         )}
 
         {successMessage && (
-          <p className="rounded-2xl border border-emerald-300/20 bg-emerald-950/35 px-4 py-3 text-sm font-medium text-emerald-100">
+          <p className="rounded-2xl border border-blue-200/20 bg-blue-950/40 px-4 py-3 text-sm font-medium text-blue-100">
             {successMessage}
           </p>
         )}
@@ -403,7 +403,7 @@ function LoginCard({ mode, highlighted = false }: LoginCardProps) {
         <button
           type="submit"
           disabled={isSubmitting}
-          className="rounded-2xl bg-amber-200 px-5 py-3 text-sm font-bold uppercase tracking-[0.18em] text-emerald-950 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#d6b56c] hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:bg-amber-200"
+          className="rounded-2xl bg-amber-200 px-5 py-3 text-sm font-bold uppercase tracking-[0.18em] text-blue-950 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#d6b56c] hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-60 disabled:hover:translate-y-0 disabled:hover:bg-amber-200"
         >
           {isSubmitting ? 'Molimo sačekajte...' : submitLabel}
         </button>

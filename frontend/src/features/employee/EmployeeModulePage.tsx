@@ -471,7 +471,7 @@ function TimeOffContent() {
           )}
 
           {successMessage && (
-            <p className="rounded-2xl border border-emerald-300/20 bg-emerald-300/10 px-4 py-3 text-sm font-semibold text-emerald-100">
+            <p className="rounded-2xl border border-blue-200/20 bg-blue-950/40 px-4 py-3 text-sm font-semibold text-blue-100">
               {successMessage}
             </p>
           )}
@@ -611,7 +611,7 @@ function EmployeeModulePage({ module }: EmployeeModulePageProps) {
   return (
     <div className="grid gap-6">
       <PageHeader
-        eyebrow="Frizerski prostor"
+        eyebrow="Studio prostor"
         title={copy.title}
         subtitle={copy.subtitle}
       />

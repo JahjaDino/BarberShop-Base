@@ -68,7 +68,7 @@ function Sidebar() {
                 Hair Studio MIMI
               </span>
               <span className="block truncate text-[11px] uppercase tracking-[0.18em] text-amber-200/70">
-                Beauty Studio
+                Hair Studio
               </span>
             </span>
           </button>
@@ -138,7 +138,7 @@ function Sidebar() {
               Hair Studio MIMI
             </span>
             <span className="block text-xs uppercase tracking-[0.28em] text-amber-200/70">
-              Beauty Studio
+              Hair Studio
             </span>
           </span>
         </button>
@@ -165,7 +165,7 @@ function Sidebar() {
         </nav>
       </div>
 
-      <div className="mt-8 hidden rounded-2xl border border-amber-200/20 bg-emerald-950/60 p-4 shadow-[0_0_35px_rgba(20,83,45,0.25)] lg:block">
+      <div className="mt-8 hidden rounded-2xl border border-amber-200/20 bg-blue-950/60 p-4 shadow-[0_0_35px_rgba(30,64,175,0.20)] lg:block">
         <p className="text-xs uppercase tracking-[0.24em] text-amber-200/70">
           Radno vrijeme
         </p>
@@ -173,11 +173,11 @@ function Sidebar() {
         <div className="mt-3 space-y-2 text-sm text-stone-300">
           <div className="flex justify-between gap-4">
             <span>Pon - Pet</span>
-            <span>08:00 - 20:00</span>
+            <span>07:00 - 14:00</span>
           </div>
           <div className="flex justify-between gap-4">
             <span>Subota</span>
-            <span>09:00 - 18:00</span>
+            <span>08:00 - 12:00</span>
           </div>
           <div className="flex justify-between gap-4">
             <span>Nedjelja</span>

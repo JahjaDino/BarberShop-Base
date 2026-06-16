@@ -1,6 +1,6 @@
-# Barbershop Frontend
+# Hair Studio MIMI Frontend
 
-Modern barbershop management application built with React, TypeScript and Vite.
+Modern hair studio management application built with React, TypeScript and Vite.
 
 ## Features
 

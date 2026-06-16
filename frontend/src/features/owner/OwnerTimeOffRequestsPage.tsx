@@ -114,7 +114,7 @@ function OwnerTimeOffRequestsPage() {
       <PageHeader
         eyebrow="Vlasnički prostor"
         title="Odsustva"
-        subtitle="Pregledajte i obradite zahtjeve frizera za odsustvo."
+        subtitle="Pregledajte i obradite zahtjeve frizerki za odsustvo."
       />
 
       <SectionCard>
@@ -125,7 +125,7 @@ function OwnerTimeOffRequestsPage() {
         )}
 
         {successMessage && (
-          <p className="mb-5 rounded-2xl border border-emerald-300/20 bg-emerald-300/10 px-4 py-3 text-sm font-semibold text-emerald-100">
+          <p className="mb-5 rounded-2xl border border-blue-200/20 bg-blue-950/40 px-4 py-3 text-sm font-semibold text-blue-100">
             {successMessage}
           </p>
         )}
@@ -135,7 +135,7 @@ function OwnerTimeOffRequestsPage() {
         ) : requests.length === 0 ? (
           <EmptyState
             title="Nema zahtjeva za odsustvo."
-            description="Kada frizer pošalje zahtjev, bit će prikazan ovdje."
+            description="Kada frizerka pošalje zahtjev, bit će prikazan ovdje."
           />
         ) : (
           <div className="grid gap-4">
@@ -182,7 +182,7 @@ function OwnerTimeOffRequestsPage() {
                         }
                         rows={3}
                         className="w-full min-w-0 resize-none rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-sm text-stone-100 outline-none transition focus:border-amber-200/35"
-                        placeholder="Napomena za frizera"
+                        placeholder="Napomena za frizerku"
                       />
 
                       <button

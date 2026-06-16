@@ -1,9 +1,9 @@
 const contacts = [
-  { icon: '📞', label: 'Telefon', value: '+387 61 123 456' },
-  { icon: '✉️', label: 'Email', value: 'info@classiccuts.ba' },
-  { icon: '📍', label: 'Lokacija', value: 'Bihać, Bosna i Hercegovina' },
+  { icon: 'T', label: 'Telefon', value: '+387 61 123 456' },
+  { icon: '@', label: 'Email', value: 'info@hairstudiomimi.ba' },
+  { icon: 'L', label: 'Lokacija', value: 'Bihac, Bosna i Hercegovina' },
   {
-    icon: '🕒',
+    icon: 'H',
     label: 'Radno vrijeme',
     value: 'Pon - Pet 08:00 - 20:00, Subota 09:00 - 18:00',
   },
@@ -29,44 +29,44 @@ function ContactSection() {
         </p>
 
         <h2 className="mt-4 max-w-3xl text-4xl font-black leading-tight text-stone-50 sm:text-5xl">
-          Rezervacija počinje jednim klikom.
+          Rezervacija pocinje jednim klikom.
         </h2>
 
         <p className="mt-4 max-w-2xl text-base leading-7 text-stone-300">
-          Javite nam se za informacije o salonu ili se prijavite u aplikaciju i
-          upravljajte terminima na jednom mjestu.
+          Javite se Hair Studio MIMI timu za informacije o uslugama ili se
+          prijavite u aplikaciju i upravljajte terminima na jednom mjestu.
         </p>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
           {contacts
             .filter((contact) => contact.label !== 'Radno vrijeme')
             .map((contact) => (
-            <article
-              key={contact.label}
-              className="flex min-h-48 flex-col justify-between rounded-2xl border border-amber-200/10 bg-white/[0.03] p-5 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-amber-200/25 hover:bg-white/[0.05]"
-            >
-              <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-amber-200/15 bg-amber-200/10 text-xl text-amber-200">
-                {contact.icon}
-              </div>
+              <article
+                key={contact.label}
+                className="flex min-h-48 flex-col justify-between rounded-2xl border border-amber-200/10 bg-white/[0.03] p-5 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-amber-200/25 hover:bg-white/[0.05]"
+              >
+                <div className="flex h-12 w-12 items-center justify-center rounded-2xl border border-amber-200/15 bg-amber-200/10 text-xl font-black text-amber-200">
+                  {contact.icon}
+                </div>
 
-              <div className="mt-6">
-                <p className="text-xs font-semibold uppercase tracking-[0.24em] text-amber-200/70">
-                  {contact.label}
-                </p>
-                <p className="mt-3 text-lg font-semibold leading-7 text-white">
-                  {contact.value}
-                </p>
-              </div>
-            </article>
-          ))}
+                <div className="mt-6">
+                  <p className="text-xs font-semibold uppercase tracking-[0.24em] text-amber-200/70">
+                    {contact.label}
+                  </p>
+                  <p className="mt-3 text-lg font-semibold leading-7 text-white">
+                    {contact.value}
+                  </p>
+                </div>
+              </article>
+            ))}
         </div>
 
-        <div className="mt-4 rounded-[28px] border border-amber-200/10 bg-emerald-950/35 p-6 backdrop-blur">
+        <div className="mt-4 rounded-[28px] border border-amber-200/10 bg-blue-950/35 p-6 backdrop-blur">
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-amber-200/70">
             Mapa lokacije
           </p>
           <div className="mt-5 grid h-56 place-items-center rounded-2xl border border-amber-200/10 bg-black/35 text-sm font-semibold uppercase tracking-[0.24em] text-stone-400">
-            Bihać centar
+            Bihac centar
           </div>
         </div>
 
@@ -84,13 +84,13 @@ function ContactSection() {
           <button
             type="button"
             onClick={handleLoginClick}
-            className="inline-flex shrink-0 justify-center rounded-2xl bg-amber-200 px-6 py-4 text-sm font-bold uppercase tracking-[0.2em] text-emerald-950 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#d6b56c]"
+            className="inline-flex shrink-0 justify-center rounded-2xl bg-amber-200 px-6 py-4 text-sm font-bold uppercase tracking-[0.2em] text-blue-950 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#d6b56c]"
           >
             Prijavi se
           </button>
         </div>
 
-        <div className="mt-4 rounded-[28px] border border-amber-200/20 bg-emerald-950/60 p-6 shadow-[0_0_35px_rgba(20,83,45,0.25)] backdrop-blur-xl">
+        <div className="mt-4 rounded-[28px] border border-amber-200/20 bg-blue-950/60 p-6 shadow-[0_0_35px_rgba(30,64,175,0.20)] backdrop-blur-xl">
           <p className="text-xs font-semibold uppercase tracking-[0.24em] text-amber-200/70">
             Radno vrijeme
           </p>

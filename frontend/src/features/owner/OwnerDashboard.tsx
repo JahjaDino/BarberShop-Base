@@ -150,7 +150,7 @@ function OwnerDashboard() {
       <PageHeader
         eyebrow="Vlasnički prostor"
         title="Dobrodošli u vlasnički prostor"
-        subtitle="Upravljajte terminima, frizerima, uslugama i poslovanjem salona."
+        subtitle="Upravljajte terminima, frizerkama, uslugama i poslovanjem salona."
       />
 
       <div className="flex flex-col gap-3 sm:flex-row">
@@ -158,7 +158,7 @@ function OwnerDashboard() {
           Pregled termina
         </Link>
         <Link to="/app/owner/employees" className={buttonStyles.secondary}>
-          Dodaj frizera
+          Dodaj frizerku
         </Link>
       </div>
 
@@ -188,7 +188,7 @@ function OwnerDashboard() {
               detail="Čekaju potvrdu"
             />
             <StatCard
-              label="Aktivni frizeri"
+              label="Aktivne frizerke"
               value={String(activeEmployees.length)}
               detail={`${availableEmployeesCount} trenutno dostupno`}
             />
@@ -229,13 +229,13 @@ function OwnerDashboard() {
 
             <SectionCard>
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-amber-200/70">
-                Frizeri danas
+                Frizerke danas
               </p>
               <div className="mt-5 grid gap-3">
                 {activeEmployees.length === 0 ? (
                   <EmptyState
-                    title="Nema aktivnih frizera."
-                    description="Aktivni frizeri će biti prikazani kada postoje u bazi."
+                    title="Nema aktivnih frizerki."
+                    description="Aktivne frizerke će biti prikazane kada postoje u bazi."
                   />
                 ) : (
                   activeEmployees.map((employee) => (

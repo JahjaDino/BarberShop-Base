@@ -89,7 +89,7 @@ function AppointmentCard({
             {appointment.serviceName || 'Usluga'}
           </h3>
           <p className="mt-2 text-sm text-stone-400">
-            Frizer: {appointment.employeeName || 'Nije dostupno'}
+            Frizerka: {appointment.employeeName || 'Nije dostupno'}
           </p>
         </div>
         <StatusBadge

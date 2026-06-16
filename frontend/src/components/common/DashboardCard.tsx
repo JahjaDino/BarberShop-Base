@@ -23,7 +23,7 @@ function DashboardCard({
       <div className="mt-3 flex items-start justify-between gap-4">
         <h3 className="text-lg font-bold text-stone-50">{title}</h3>
         {value && (
-          <span className="rounded-full border border-emerald-300/20 bg-emerald-300/10 px-3 py-1 text-xs font-semibold text-emerald-100">
+          <span className="rounded-full border border-blue-200/20 bg-blue-950/40 px-3 py-1 text-xs font-semibold text-blue-100">
             {value}
           </span>
         )}

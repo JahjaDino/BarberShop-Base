@@ -1,13 +1,13 @@
-import barberShop1 from '../../assets/optimized/barberShop1-gallery.webp'
-import beardCut from '../../assets/optimized/beardCut-gallery.webp'
+import salonInterior from '../../assets/optimized/barberShop1-gallery.webp'
+import hairCare from '../../assets/optimized/beardCut-gallery.webp'
 import equipment from '../../assets/optimized/equipment-gallery.webp'
-import fadeCut from '../../assets/optimized/fadeCut-gallery.webp'
+import styledHair from '../../assets/optimized/fadeCut-gallery.webp'
 
 const galleryItems = [
-  { title: 'Fade Cut', image: fadeCut },
-  { title: 'Beard Trim', image: beardCut },
-  { title: 'Salon Interior', image: barberShop1 },
-  { title: 'Premium Equipment', image: equipment },
+  { title: 'Moderne frizure', image: styledHair },
+  { title: 'Njega i stiliziranje', image: hairCare },
+  { title: 'Hair Studio MIMI', image: salonInterior },
+  { title: 'Profesionalni proizvodi', image: equipment },
 ]
 
 function GallerySection() {
@@ -19,7 +19,7 @@ function GallerySection() {
         </p>
 
         <h2 className="mt-4 max-w-4xl text-4xl font-black leading-tight text-stone-50 sm:text-5xl">
-          Pogledajte atmosferu i stil našeg salona.
+          Pogledajte atmosferu i stil Hair Studio MIMI salona.
         </h2>
 
         <div className="mt-10 grid gap-4 md:grid-cols-2">
@@ -35,7 +35,7 @@ function GallerySection() {
                 decoding="async"
                 className="h-full w-full object-cover transition duration-700 group-hover:scale-105"
               />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/20 to-transparent" />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/75 via-blue-950/20 to-transparent" />
 
               <div className="absolute bottom-5 left-5 rounded-2xl border border-amber-200/15 bg-black/35 px-4 py-3 backdrop-blur">
                 <p className="text-sm font-bold uppercase tracking-[0.2em] text-amber-100">

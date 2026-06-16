@@ -1,9 +1,12 @@
-import { useEffect, useState } from 'react'
+import { useCallback, useEffect, useState } from 'react'
 import {
+  cancelAppointment,
   getOwnerPortalAppointments,
+  updateAppointmentStatus,
   type AppointmentStatus,
   type OwnerAppointmentListItemDto,
 } from '../../api/appointmentsApi'
+import AppButton from '../../components/common/AppButton'
 import EmptyState from '../../components/common/EmptyState'
 import PageHeader from '../../components/common/PageHeader'
 import SectionCard from '../../components/common/SectionCard'
@@ -55,37 +58,75 @@ function AppointmentsContent() {
   const [appointments, setAppointments] = useState<OwnerAppointmentListItemDto[]>([])
   const [isLoading, setIsLoading] = useState(true)
   const [error, setError] = useState('')
+  const [actionAppointmentId, setActionAppointmentId] = useState<number | null>(
+    null,
+  )
 
-  useEffect(() => {
-    let isMounted = true
-
-    async function loadAppointments() {
+  const loadAppointments = useCallback(async (showLoading = true) => {
+    if (showLoading) {
       setIsLoading(true)
-      setError('')
+    }
+    setError('')
 
-      try {
-        const response = await getOwnerPortalAppointments()
-        if (isMounted) setAppointments(response.items)
-      } catch (requestError) {
-        if (isMounted) {
-          setAppointments([])
-          setError(
-            requestError instanceof Error
-              ? requestError.message
-              : 'Termini trenutno nisu dostupni.',
-          )
-        }
-      } finally {
-        if (isMounted) setIsLoading(false)
+    try {
+      const response = await getOwnerPortalAppointments()
+      setAppointments(response.items)
+    } catch (requestError) {
+      setAppointments([])
+      setError(
+        requestError instanceof Error
+          ? requestError.message
+          : 'Termini trenutno nisu dostupni.',
+      )
+    } finally {
+      if (showLoading) {
+        setIsLoading(false)
       }
     }
-
-    loadAppointments()
-
-    return () => {
-      isMounted = false
-    }
   }, [])
+
+  useEffect(() => {
+    loadAppointments()
+  }, [loadAppointments])
+
+  const handleConfirm = async (appointmentId: number) => {
+    setActionAppointmentId(appointmentId)
+    setError('')
+
+    try {
+      await updateAppointmentStatus(appointmentId, 'CONFIRMED')
+      await loadAppointments(false)
+    } catch (requestError) {
+      setError(
+        requestError instanceof Error
+          ? requestError.message
+          : 'Status termina nije moguće promijeniti.',
+      )
+    } finally {
+      setActionAppointmentId(null)
+    }
+  }
+
+  const handleReject = async (appointmentId: number) => {
+    setActionAppointmentId(appointmentId)
+    setError('')
+
+    try {
+      await cancelAppointment(appointmentId, 'Termin je odbijen od vlasnika.')
+      await loadAppointments(false)
+    } catch (requestError) {
+      setError(
+        requestError instanceof Error
+          ? requestError.message
+          : 'Termin nije moguće odbiti.',
+      )
+    } finally {
+      setActionAppointmentId(null)
+    }
+  }
+
+  const isActionLoading = (appointmentId: number) =>
+    actionAppointmentId === appointmentId
 
   if (isLoading) {
     return <p className="text-sm text-stone-300">Učitavanje termina...</p>
@@ -109,7 +150,7 @@ function AppointmentsContent() {
       {appointments.map((appointment) => (
         <article
           key={appointment.appointmentId}
-          className="grid gap-4 rounded-2xl border border-amber-200/10 bg-black/25 p-4 lg:grid-cols-[150px_minmax(0,1fr)_minmax(0,1fr)_auto] lg:items-center"
+          className="grid gap-4 rounded-2xl border border-amber-200/10 bg-black/25 p-4 lg:grid-cols-[150px_minmax(0,1fr)_minmax(0,1fr)_minmax(180px,auto)] lg:items-center"
         >
           <div>
             <span className="block font-semibold text-amber-100">
@@ -128,12 +169,32 @@ function AppointmentsContent() {
             </p>
           </div>
           <p className="text-sm text-stone-300">
-            Frizer: {appointment.employeeName || 'Nije naveden'}
+            Frizerka: {appointment.employeeName || 'Nije navedena'}
           </p>
-          <StatusBadge
-            label={translateAppointmentStatus(appointment.status)}
-            tone={getAppointmentTone(appointment.status)}
-          />
+          <div className="flex min-w-0 flex-col gap-3 lg:items-end">
+            <StatusBadge
+              label={translateAppointmentStatus(appointment.status)}
+              tone={getAppointmentTone(appointment.status)}
+            />
+            {appointment.status === 'PENDING' && (
+              <div className="flex min-h-[42px] w-full flex-col gap-2 sm:w-auto sm:flex-row sm:flex-wrap lg:justify-end">
+                <AppButton
+                  disabled={isActionLoading(appointment.appointmentId)}
+                  onClick={() => handleConfirm(appointment.appointmentId)}
+                  variant="secondary"
+                >
+                  Potvrdi
+                </AppButton>
+                <AppButton
+                  disabled={isActionLoading(appointment.appointmentId)}
+                  onClick={() => handleReject(appointment.appointmentId)}
+                  variant="danger"
+                >
+                  Odbij
+                </AppButton>
+              </div>
+            )}
+          </div>
         </article>
       ))}
     </div>
