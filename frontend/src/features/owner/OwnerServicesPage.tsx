@@ -430,7 +430,7 @@ function OwnerServicesPage() {
         </p>
       )}
 
-      <section className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_380px]">
+      <section className="grid min-w-0 gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(320px,380px)]">
         <SectionCard>
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
@@ -577,7 +577,7 @@ function OwnerServicesPage() {
         </SectionCard>
       </section>
 
-      <section className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_380px]">
+      <section className="grid min-w-0 gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(320px,380px)]">
         <SectionCard>
           <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
             <div>
@@ -606,10 +606,10 @@ function OwnerServicesPage() {
             <div className="mt-5 grid gap-4">
               {services.map((service) => (
                 <AppCard key={service.serviceId} variant="interactive">
-                  <div className="grid min-w-0 gap-5 xl:grid-cols-[minmax(0,1.25fr)_minmax(320px,0.8fr)_minmax(240px,auto)] xl:items-center">
+                  <div className="grid min-w-0 gap-5 xl:grid-cols-[minmax(0,1.25fr)_minmax(0,0.8fr)_minmax(220px,auto)] xl:items-center">
                     <div className="min-w-0">
                       <div className="flex flex-wrap items-center gap-2">
-                        <h3 className="truncate text-xl font-black text-stone-50">
+                        <h3 className="break-words text-xl font-black text-stone-50 sm:truncate">
                           {service.name}
                         </h3>
                         <StatusBadge
@@ -634,7 +634,7 @@ function OwnerServicesPage() {
                       </span>
                     </div>
 
-                    <div className="flex flex-wrap gap-2 xl:justify-end">
+                    <div className="flex min-w-0 flex-col gap-2 sm:flex-row sm:flex-wrap xl:justify-end">
                       <button
                         type="button"
                         onClick={() => handleEditService(service)}

@@ -37,8 +37,10 @@ function ContactSection() {
           upravljajte terminima na jednom mjestu.
         </p>
 
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
-          {contacts.map((contact) => (
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
+          {contacts
+            .filter((contact) => contact.label !== 'Radno vrijeme')
+            .map((contact) => (
             <article
               key={contact.label}
               className="flex min-h-48 flex-col justify-between rounded-2xl border border-amber-200/10 bg-white/[0.03] p-5 backdrop-blur transition-all duration-300 hover:-translate-y-1 hover:border-amber-200/25 hover:bg-white/[0.05]"
@@ -86,6 +88,33 @@ function ContactSection() {
           >
             Prijavi se
           </button>
+        </div>
+
+        <div className="mt-4 rounded-[28px] border border-amber-200/20 bg-emerald-950/60 p-6 shadow-[0_0_35px_rgba(20,83,45,0.25)] backdrop-blur-xl">
+          <p className="text-xs font-semibold uppercase tracking-[0.24em] text-amber-200/70">
+            Radno vrijeme
+          </p>
+
+          <div className="mt-4 grid gap-3 text-sm text-stone-300 sm:grid-cols-3">
+            <div className="flex justify-between gap-4 rounded-2xl border border-amber-200/10 bg-black/20 px-4 py-3 sm:block">
+              <span className="block">Pon - Pet</span>
+              <span className="block font-semibold text-stone-100 sm:mt-2">
+                08:00 - 20:00
+              </span>
+            </div>
+            <div className="flex justify-between gap-4 rounded-2xl border border-amber-200/10 bg-black/20 px-4 py-3 sm:block">
+              <span className="block">Subota</span>
+              <span className="block font-semibold text-stone-100 sm:mt-2">
+                09:00 - 18:00
+              </span>
+            </div>
+            <div className="flex justify-between gap-4 rounded-2xl border border-amber-200/10 bg-black/20 px-4 py-3 sm:block">
+              <span className="block">Nedjelja</span>
+              <span className="block font-semibold text-stone-100 sm:mt-2">
+                Zatvoreno
+              </span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

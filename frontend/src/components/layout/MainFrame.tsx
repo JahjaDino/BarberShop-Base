@@ -65,7 +65,7 @@ function MainFrame() {
               user={user}
               onLogout={handleLogout}
             />
-            <div className="min-w-0 flex-1 px-5 py-7 sm:px-8 lg:px-10">
+            <div className="min-w-0 flex-1 px-4 py-5 sm:px-8 sm:py-7 lg:px-10">
               <Outlet />
             </div>
           </div>

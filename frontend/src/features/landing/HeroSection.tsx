@@ -43,13 +43,13 @@ function HeroSection() {
       <div className="absolute inset-0 bg-gradient-to-r from-black/75 via-black/45 to-black/70" />
       <div className="absolute inset-0 bg-emerald-950/15" />
 
-      <div className="relative mx-auto grid min-h-screen max-w-[1450px] items-center gap-12 px-5 py-10 sm:px-8 lg:grid-cols-[minmax(0,720px)_390px] lg:justify-between lg:px-12 xl:px-16">
-        <div className="max-w-[760px]">
-          <p className="text-xs font-semibold uppercase tracking-[0.32em] text-amber-200/80">
+      <div className="relative mx-auto grid min-h-screen max-w-[1450px] items-center gap-10 px-4 py-8 sm:px-8 sm:py-10 lg:grid-cols-[minmax(0,720px)_390px] lg:justify-between lg:px-12 xl:px-16">
+        <div className="min-w-0 max-w-[760px]">
+          <p className="break-words text-xs font-semibold uppercase tracking-[0.22em] text-amber-200/80 sm:tracking-[0.32em]">
             Moderni barbershop
           </p>
 
-          <h1 className="mt-5 text-5xl font-black leading-[0.95] text-stone-50 sm:text-6xl lg:text-7xl">
+          <h1 className="mt-5 break-words text-4xl font-black leading-[0.98] text-stone-50 sm:text-6xl lg:text-7xl">
             VIŠE OD FRIZURE.
             <span className="mt-2 block text-amber-100">DOŽIVLJAJ.</span>
           </h1>
@@ -63,7 +63,7 @@ function HeroSection() {
             <button
               type="button"
               onClick={() => focusCard('login')}
-              className="rounded-2xl bg-amber-200 px-6 py-4 text-center text-sm font-bold uppercase tracking-[0.2em] text-emerald-950 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#d6b56c] hover:shadow-lg"
+              className="rounded-2xl bg-amber-200 px-6 py-4 text-center text-sm font-bold uppercase tracking-[0.16em] text-emerald-950 transition-all duration-300 hover:-translate-y-0.5 hover:bg-[#d6b56c] hover:shadow-lg sm:tracking-[0.2em]"
             >
               Prijavi se
             </button>
@@ -71,13 +71,13 @@ function HeroSection() {
             <button
               type="button"
               onClick={() => focusCard('register')}
-              className="rounded-2xl border border-amber-200/35 bg-black/25 px-6 py-4 text-center text-sm font-bold uppercase tracking-[0.2em] text-amber-100 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200/50 hover:bg-amber-100/10"
+              className="rounded-2xl border border-amber-200/35 bg-black/25 px-6 py-4 text-center text-sm font-bold uppercase tracking-[0.16em] text-amber-100 backdrop-blur transition-all duration-300 hover:-translate-y-0.5 hover:border-amber-200/50 hover:bg-amber-100/10 sm:tracking-[0.2em]"
             >
               Registruj se
             </button>
           </div>
 
-          <div className="mt-8 grid max-w-xl grid-cols-3 gap-4 text-center">
+          <div className="mt-8 grid max-w-xl grid-cols-1 gap-3 text-center sm:grid-cols-3 sm:gap-4">
             {[
               ['4.9', 'Ocjena'],
               ['2k+', 'Termina'],
@@ -85,10 +85,10 @@ function HeroSection() {
             ].map(([value, label]) => (
               <div
                 key={label}
-                className="rounded-2xl border border-amber-200/15 bg-black/35 p-5 backdrop-blur"
+                className="min-w-0 rounded-2xl border border-amber-200/15 bg-black/35 p-4 backdrop-blur sm:p-5"
               >
                 <p className="text-2xl font-bold text-amber-100">{value}</p>
-                <p className="mt-1 text-xs uppercase tracking-[0.18em] text-stone-300">
+                <p className="mt-1 break-words text-xs uppercase tracking-[0.14em] text-stone-300 sm:tracking-[0.18em]">
                   {label}
                 </p>
               </div>
@@ -96,7 +96,7 @@ function HeroSection() {
           </div>
         </div>
 
-        <div className="relative w-full max-w-[390px] justify-self-end">
+        <div className="relative w-full max-w-[390px] justify-self-center lg:justify-self-end">
           <div className="absolute -inset-5 rounded-[2rem] bg-amber-200/10 blur-3xl" />
           <div className="relative">
             <LoginCard mode={authMode} highlighted={highlighted} />

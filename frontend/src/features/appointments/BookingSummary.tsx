@@ -35,13 +35,13 @@ function BookingSummary({
   const paymentMethodLabel = paymentMethod ? 'Plaćanje u salonu' : 'Nije odabrano'
 
   return (
-    <section className="min-w-0 rounded-[28px] border border-amber-200/15 bg-black/30 p-5 shadow-[0_0_36px_rgba(0,0,0,0.24)] backdrop-blur-xl lg:p-6">
-      <div className="flex flex-col gap-3 md:flex-row md:items-end md:justify-between">
-        <div>
-          <p className="text-xs font-semibold uppercase tracking-[0.28em] text-amber-200/70">
+    <section className="min-w-0 rounded-[24px] border border-amber-200/15 bg-black/30 p-4 shadow-[0_0_36px_rgba(0,0,0,0.24)] backdrop-blur-xl sm:rounded-[28px] sm:p-5 lg:p-6">
+      <div className="flex min-w-0 flex-col gap-3 md:flex-row md:items-end md:justify-between">
+        <div className="min-w-0">
+          <p className="break-words text-xs font-semibold uppercase tracking-[0.22em] text-amber-200/70 sm:tracking-[0.28em]">
             Korak 5
           </p>
-          <h2 className="mt-3 text-2xl font-black text-stone-50">
+          <h2 className="mt-3 break-words text-2xl font-black text-stone-50">
             Sažetak rezervacije
           </h2>
         </div>
@@ -66,12 +66,12 @@ function BookingSummary({
         ].map(([label, value]) => (
           <div
             key={label}
-            className="rounded-2xl border border-amber-200/10 bg-white/[0.035] p-4"
+            className="min-w-0 rounded-2xl border border-amber-200/10 bg-white/[0.035] p-4"
           >
-            <dt className="text-xs font-semibold uppercase tracking-[0.18em] text-stone-500">
+            <dt className="break-words text-xs font-semibold uppercase tracking-[0.16em] text-stone-500 sm:tracking-[0.18em]">
               {label}
             </dt>
-            <dd className="mt-2 font-semibold text-stone-100">{value}</dd>
+            <dd className="mt-2 break-words font-semibold text-stone-100">{value}</dd>
           </div>
         ))}
       </dl>

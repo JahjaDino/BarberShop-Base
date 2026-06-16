@@ -8,11 +8,11 @@ interface TimeSlotGridProps {
 
 function TimeSlotGrid({ slots, selectedTime, onSelect }: TimeSlotGridProps) {
   return (
-    <section className="min-w-0 rounded-[28px] border border-amber-200/10 bg-white/[0.035] p-5 backdrop-blur">
-      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-amber-200/70">
+    <section className="min-w-0 rounded-[24px] border border-amber-200/10 bg-white/[0.035] p-4 backdrop-blur sm:rounded-[28px] sm:p-5">
+      <p className="break-words text-xs font-semibold uppercase tracking-[0.22em] text-amber-200/70 sm:tracking-[0.28em]">
         Korak 4
       </p>
-      <h2 className="mt-3 text-2xl font-black text-stone-50">
+      <h2 className="mt-3 break-words text-2xl font-black text-stone-50">
         Odaberite termin
       </h2>
 
@@ -33,7 +33,7 @@ function TimeSlotGrid({ slots, selectedTime, onSelect }: TimeSlotGridProps) {
               type="button"
               disabled={isBusy}
               onClick={() => onSelect(slot.value)}
-              className={`rounded-2xl border px-4 py-3 text-sm font-bold transition-all duration-300 ${
+              className={`min-w-0 rounded-2xl border px-3 py-3 text-sm font-bold transition-all duration-300 sm:px-4 ${
                 isBusy
                   ? 'cursor-not-allowed border-stone-700 bg-stone-900/60 text-stone-600'
                   : isSelected

@@ -8,36 +8,36 @@ interface AppSidebarProps {
 
 function AppSidebar({ navigationGroups, workspaceLabel }: AppSidebarProps) {
   return (
-    <aside className="flex w-full flex-col border-b border-amber-200/10 bg-black/35 p-5 backdrop-blur-xl lg:fixed lg:left-0 lg:top-0 lg:z-20 lg:h-screen lg:w-[280px] lg:border-b-0 lg:border-r">
+    <aside className="sticky top-0 z-30 flex w-full min-w-0 flex-col border-b border-amber-200/10 bg-black/60 p-4 backdrop-blur-xl lg:fixed lg:left-0 lg:top-0 lg:z-20 lg:h-screen lg:w-[280px] lg:border-b-0 lg:border-r lg:bg-black/35 lg:p-5">
       <div className="shrink-0">
-        <div className="flex items-center gap-3">
+        <div className="flex min-w-0 items-center gap-3">
           <span className="grid h-11 w-11 place-items-center rounded-2xl border border-amber-200/25 bg-amber-100/10 text-lg font-black text-amber-100 shadow-[0_0_30px_rgba(245,213,145,0.12)]">
             CC
           </span>
-          <span>
-            <span className="block text-lg font-semibold tracking-wide text-stone-50">
+          <span className="min-w-0">
+            <span className="block truncate text-lg font-semibold tracking-wide text-stone-50">
               Classic Cuts
             </span>
-            <span className="block text-xs uppercase tracking-[0.28em] text-amber-200/70">
+            <span className="block truncate text-xs uppercase tracking-[0.2em] text-amber-200/70 lg:tracking-[0.28em]">
               {workspaceLabel}
             </span>
           </span>
         </div>
       </div>
 
-      <nav className="mt-8 grid flex-1 content-start gap-4">
+      <nav className="app-scrollbar mt-4 flex min-w-0 gap-3 overflow-x-auto pb-1 lg:mt-8 lg:grid lg:flex-1 lg:content-start lg:gap-4 lg:overflow-visible lg:pb-0">
         {navigationGroups.map((group) => (
-          <div key={group.label}>
-            <p className="px-3 text-xs font-semibold uppercase tracking-[0.2em] text-amber-200/55">
+          <div key={group.label} className="shrink-0 lg:shrink">
+            <p className="px-3 text-xs font-semibold uppercase tracking-[0.16em] text-amber-200/55 lg:tracking-[0.2em]">
               {group.label}
             </p>
-            <div className="mt-2 grid gap-1">
+            <div className="mt-2 flex gap-1 lg:grid">
               {group.items.map((item) => (
                 <NavLink
                   key={item.path}
                   to={item.path}
                   className={({ isActive }) =>
-                    `rounded-2xl border px-4 py-2.5 text-sm font-medium transition-all duration-300 ${
+                    `inline-flex whitespace-nowrap rounded-2xl border px-4 py-2.5 text-sm font-medium transition-all duration-300 lg:flex lg:whitespace-normal ${
                       isActive
                         ? 'border-amber-200/35 bg-amber-100/10 text-amber-100 shadow-[0_0_28px_rgba(245,213,145,0.08)]'
                         : 'border-transparent text-stone-300 hover:border-amber-200/25 hover:bg-amber-100/10 hover:text-amber-100'
@@ -52,7 +52,7 @@ function AppSidebar({ navigationGroups, workspaceLabel }: AppSidebarProps) {
         ))}
       </nav>
 
-      <div className="mt-5 shrink-0 border-t border-amber-200/10 pt-5 text-xs leading-5 text-stone-500">
+      <div className="mt-5 hidden shrink-0 border-t border-amber-200/10 pt-5 text-xs leading-5 text-stone-500 lg:block">
         Classic Cuts aplikacija
       </div>
     </aside>

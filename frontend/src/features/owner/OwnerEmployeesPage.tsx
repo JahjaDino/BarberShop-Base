@@ -392,7 +392,7 @@ function OwnerEmployeesPage() {
         subtitle="Upravljajte frizerima koji rade u salonu."
       />
 
-      <div className="grid gap-6 xl:grid-cols-[420px_minmax(0,1fr)]">
+      <div className="grid min-w-0 gap-6 xl:grid-cols-[minmax(320px,420px)_minmax(0,1fr)]">
         <div className="grid content-start gap-6">
           <SectionCard>
             <p className="text-xs font-semibold uppercase tracking-[0.28em] text-amber-200/70">
@@ -403,7 +403,7 @@ function OwnerEmployeesPage() {
             </h2>
 
             <form onSubmit={handleSubmit} className="mt-6 grid gap-4">
-              <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-1">
+              <div className="grid min-w-0 gap-4 sm:grid-cols-2 xl:grid-cols-1">
                 <label className="grid gap-2 text-sm font-semibold text-stone-300">
                   Ime
                   <input
@@ -411,7 +411,7 @@ function OwnerEmployeesPage() {
                     onChange={(event) =>
                       handleChange('firstName', event.target.value)
                     }
-                    className="rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-stone-100 outline-none transition focus:border-amber-200/35"
+                    className="w-full min-w-0 rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-stone-100 outline-none transition focus:border-amber-200/35"
                     placeholder="npr. Ime"
                   />
                 </label>
@@ -423,7 +423,7 @@ function OwnerEmployeesPage() {
                     onChange={(event) =>
                       handleChange('lastName', event.target.value)
                     }
-                    className="rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-stone-100 outline-none transition focus:border-amber-200/35"
+                    className="w-full min-w-0 rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-stone-100 outline-none transition focus:border-amber-200/35"
                     placeholder="npr. Prezime"
                   />
                 </label>
@@ -435,7 +435,7 @@ function OwnerEmployeesPage() {
                   type="email"
                   value={form.email}
                   onChange={(event) => handleChange('email', event.target.value)}
-                  className="rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-stone-100 outline-none transition focus:border-amber-200/35"
+                  className="w-full min-w-0 rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-stone-100 outline-none transition focus:border-amber-200/35"
                   placeholder="frizer@classiccuts.ba"
                 />
               </label>
@@ -447,7 +447,7 @@ function OwnerEmployeesPage() {
                   onChange={(event) =>
                     handleChange('phoneNumber', event.target.value)
                   }
-                  className="rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-stone-100 outline-none transition focus:border-amber-200/35"
+                  className="w-full min-w-0 rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-stone-100 outline-none transition focus:border-amber-200/35"
                   placeholder="+387 61 000 000"
                 />
               </label>
@@ -459,7 +459,7 @@ function OwnerEmployeesPage() {
                   onChange={(event) =>
                     handleChange('position', event.target.value)
                   }
-                  className="rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-stone-100 outline-none transition focus:border-amber-200/35"
+                  className="w-full min-w-0 rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-stone-100 outline-none transition focus:border-amber-200/35"
                   placeholder="npr. Senior frizer"
                 />
               </label>
@@ -472,7 +472,7 @@ function OwnerEmployeesPage() {
                   onChange={(event) =>
                     handleChange('password', event.target.value)
                   }
-                  className="rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-stone-100 outline-none transition focus:border-amber-200/35"
+                  className="w-full min-w-0 rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-stone-100 outline-none transition focus:border-amber-200/35"
                   placeholder="Najmanje 8 karaktera"
                 />
               </label>
@@ -485,7 +485,7 @@ function OwnerEmployeesPage() {
                   onChange={(event) =>
                     handleChange('employmentDate', event.target.value)
                   }
-                  className="rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-stone-100 outline-none transition focus:border-amber-200/35"
+                  className="w-full min-w-0 rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-stone-100 outline-none transition focus:border-amber-200/35"
                 />
               </label>
 
@@ -495,7 +495,7 @@ function OwnerEmployeesPage() {
                   value={form.bio ?? ''}
                   onChange={(event) => handleChange('bio', event.target.value)}
                   rows={3}
-                  className="resize-none rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-stone-100 outline-none transition focus:border-amber-200/35"
+                  className="w-full min-w-0 resize-none rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-stone-100 outline-none transition focus:border-amber-200/35"
                   placeholder="Kratak opis specijalnosti."
                 />
               </label>
@@ -566,7 +566,7 @@ function OwnerEmployeesPage() {
                   >
                     <div className="flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
                       <div className="min-w-0">
-                        <h3 className="truncate font-bold text-stone-50">
+                        <h3 className="break-words font-bold text-stone-50 sm:truncate">
                           {employee.fullName}
                         </h3>
                         <p className="mt-1 text-sm text-stone-400">
@@ -599,12 +599,12 @@ function OwnerEmployeesPage() {
         </div>
 
         <SectionCard>
-          <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-            <div>
+          <div className="flex min-w-0 flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
+            <div className="min-w-0">
               <p className="text-xs font-semibold uppercase tracking-[0.28em] text-amber-200/70">
                 Radno vrijeme
               </p>
-              <h2 className="mt-3 text-2xl font-black text-stone-50">
+              <h2 className="mt-3 break-words text-2xl font-black text-stone-50">
                 {selectedEmployee
                   ? selectedEmployee.fullName
                   : 'Odaberite frizera'}
@@ -668,7 +668,7 @@ function OwnerEmployeesPage() {
                   return (
                     <article
                       key={day.value}
-                      className="grid gap-4 rounded-2xl border border-amber-200/10 bg-black/25 p-4 lg:grid-cols-[180px_1fr_1fr_130px] lg:items-center"
+                      className="grid min-w-0 gap-4 rounded-2xl border border-amber-200/10 bg-black/25 p-4 lg:grid-cols-[minmax(140px,180px)_minmax(0,1fr)_minmax(0,1fr)_minmax(110px,130px)] lg:items-center"
                     >
                       <label className="flex items-center gap-3 text-sm font-bold text-stone-100">
                         <input

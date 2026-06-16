@@ -8,7 +8,7 @@ interface SectionCardProps {
 function SectionCard({ children, className = '' }: SectionCardProps) {
   return (
     <section
-      className={`rounded-[28px] border border-amber-200/10 bg-white/[0.035] p-5 shadow-[0_0_34px_rgba(0,0,0,0.20)] backdrop-blur lg:p-6 ${className}`}
+      className={`min-w-0 rounded-[24px] border border-amber-200/10 bg-white/[0.035] p-4 shadow-[0_0_34px_rgba(0,0,0,0.20)] backdrop-blur sm:rounded-[28px] sm:p-5 lg:p-6 ${className}`}
     >
       {children}
     </section>

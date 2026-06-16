@@ -364,14 +364,14 @@ function BookAppointmentPage() {
 
   return (
     <div className="grid min-w-0 gap-6">
-      <section className="min-w-0 rounded-[32px] border border-amber-200/15 bg-black/25 p-6 shadow-[0_0_45px_rgba(0,0,0,0.28)] backdrop-blur-xl lg:p-8">
-        <p className="text-xs font-semibold uppercase tracking-[0.32em] text-amber-200/75">
+      <section className="min-w-0 rounded-[28px] border border-amber-200/15 bg-black/25 p-4 shadow-[0_0_45px_rgba(0,0,0,0.28)] backdrop-blur-xl sm:rounded-[32px] sm:p-6 lg:p-8">
+        <p className="break-words text-xs font-semibold uppercase tracking-[0.22em] text-amber-200/75 sm:tracking-[0.32em]">
           Rezervacija
         </p>
-        <h1 className="mt-4 max-w-3xl text-4xl font-black leading-tight text-stone-50 sm:text-5xl">
+        <h1 className="mt-4 max-w-3xl break-words text-3xl font-black leading-tight text-stone-50 sm:text-4xl lg:text-5xl">
           Zakažite termin u nekoliko koraka
         </h1>
-        <p className="mt-5 max-w-2xl text-base leading-8 text-stone-300">
+        <p className="mt-5 max-w-2xl break-words text-sm leading-7 text-stone-300 sm:text-base sm:leading-8">
           Odaberite uslugu, frizera i slobodan termin. Usluge se sada učitavaju
           iz backend kataloga salona.
         </p>

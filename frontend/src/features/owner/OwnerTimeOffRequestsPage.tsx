@@ -141,14 +141,14 @@ function OwnerTimeOffRequestsPage() {
           <div className="grid gap-4">
             {requests.map((request) => (
               <AppCard key={request.timeOffId} variant="subtle">
-                <div className="grid gap-5 lg:grid-cols-[1fr_220px] lg:items-start">
-                  <div>
+                <div className="grid min-w-0 gap-5 lg:grid-cols-[minmax(0,1fr)_220px] lg:items-start">
+                  <div className="min-w-0">
                     <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-                      <div>
-                        <p className="text-xs font-semibold uppercase tracking-[0.22em] text-amber-200/65">
+                      <div className="min-w-0">
+                        <p className="break-words text-xs font-semibold uppercase tracking-[0.18em] text-amber-200/65 sm:tracking-[0.22em]">
                           {request.employeeName}
                         </p>
-                        <h3 className="mt-2 text-xl font-black text-stone-50">
+                        <h3 className="mt-2 break-words text-xl font-black text-stone-50">
                           {formatDateTime(request.startDate)} -{' '}
                           {formatDateTime(request.endDate)}
                         </h3>
@@ -159,19 +159,19 @@ function OwnerTimeOffRequestsPage() {
                       />
                     </div>
 
-                    <p className="mt-4 text-sm leading-6 text-stone-300">
+                    <p className="mt-4 break-words text-sm leading-6 text-stone-300">
                       {request.reason || 'Razlog nije unesen.'}
                     </p>
 
                     {request.reviewNote && (
-                      <p className="mt-3 text-sm text-stone-500">
+                      <p className="mt-3 break-words text-sm text-stone-500">
                         Napomena: {request.reviewNote}
                       </p>
                     )}
                   </div>
 
                   {request.status === 'PENDING' && (
-                    <div className="grid gap-3">
+                    <div className="grid min-w-0 gap-3">
                       <textarea
                         value={reviewNotes[request.timeOffId] ?? ''}
                         onChange={(event) =>
@@ -181,7 +181,7 @@ function OwnerTimeOffRequestsPage() {
                           }))
                         }
                         rows={3}
-                        className="resize-none rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-sm text-stone-100 outline-none transition focus:border-amber-200/35"
+                        className="w-full min-w-0 resize-none rounded-2xl border border-amber-200/10 bg-black/25 px-4 py-3 text-sm text-stone-100 outline-none transition focus:border-amber-200/35"
                         placeholder="Napomena za frizera"
                       />
 

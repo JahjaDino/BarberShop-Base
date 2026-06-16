@@ -189,14 +189,14 @@ function UserProfilePage({
           <p className="text-sm text-stone-300">Učitavanje profila...</p>
         </SectionCard>
       ) : (
-        <section className="grid gap-6 xl:grid-cols-[minmax(0,1fr)_420px]">
+        <section className="grid min-w-0 gap-6 xl:grid-cols-[minmax(0,1fr)_minmax(320px,420px)]">
           <SectionCard>
             <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
-              <div>
-                <p className="text-xs font-semibold uppercase tracking-[0.28em] text-amber-200/70">
+              <div className="min-w-0">
+                <p className="break-words text-xs font-semibold uppercase tracking-[0.22em] text-amber-200/70 sm:tracking-[0.28em]">
                   Lični podaci
                 </p>
-                <h2 className="mt-3 text-2xl font-black text-stone-50">
+                <h2 className="mt-3 break-words text-2xl font-black text-stone-50">
                   Osnovne informacije
                 </h2>
               </div>
@@ -274,10 +274,10 @@ function UserProfilePage({
           </SectionCard>
 
           <SectionCard>
-            <p className="text-xs font-semibold uppercase tracking-[0.28em] text-amber-200/70">
-              Sigurnost
-            </p>
-            <h2 className="mt-3 text-2xl font-black text-stone-50">
+              <p className="break-words text-xs font-semibold uppercase tracking-[0.22em] text-amber-200/70 sm:tracking-[0.28em]">
+                Sigurnost
+              </p>
+            <h2 className="mt-3 break-words text-2xl font-black text-stone-50">
               Promjena lozinke
             </h2>
             <p className="mt-2 text-sm leading-6 text-stone-400">

@@ -10,14 +10,14 @@ interface QuickActionCardProps {
 
 function QuickActionCard({ title, description, to, label }: QuickActionCardProps) {
   return (
-    <section className="rounded-[28px] border border-amber-200/15 bg-amber-100/10 p-6 shadow-[0_0_45px_rgba(245,213,145,0.08)]">
-      <p className="text-xs font-semibold uppercase tracking-[0.28em] text-amber-200/75">
+    <section className="min-w-0 rounded-[24px] border border-amber-200/15 bg-amber-100/10 p-4 shadow-[0_0_45px_rgba(245,213,145,0.08)] sm:rounded-[28px] sm:p-6">
+      <p className="break-words text-xs font-semibold uppercase tracking-[0.22em] text-amber-200/75 sm:tracking-[0.28em]">
         Quick action
       </p>
-      <h2 className="mt-4 text-2xl font-black leading-tight text-stone-50">
+      <h2 className="mt-4 break-words text-2xl font-black leading-tight text-stone-50">
         {title}
       </h2>
-      <p className="mt-3 max-w-2xl text-sm leading-7 text-stone-300">
+      <p className="mt-3 max-w-2xl break-words text-sm leading-7 text-stone-300">
         {description}
       </p>
       <Link

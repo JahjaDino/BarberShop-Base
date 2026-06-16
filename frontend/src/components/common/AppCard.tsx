@@ -27,7 +27,7 @@ function AppCard<T extends ElementType = 'article'>({
 
   return (
     <Component
-      className={`rounded-3xl border p-5 ${variantClasses[variant]} ${className}`}
+      className={`min-w-0 rounded-3xl border p-4 sm:p-5 ${variantClasses[variant]} ${className}`}
     >
       {children}
     </Component>

@@ -66,18 +66,18 @@ function AppointmentCard({ appointment, children }: AppointmentCardProps) {
     <AppCard className="min-h-[132px]" variant="interactive">
       <div className="grid min-w-0 gap-5 lg:grid-cols-[minmax(0,1.25fr)_220px_minmax(240px,auto)] lg:items-center">
         <div className="min-w-0">
-          <h3 className="truncate text-xl font-black text-stone-50">
+          <h3 className="break-words text-xl font-black text-stone-50 sm:truncate">
             {appointment.clientName || 'Klijent'}
           </h3>
           <p className="mt-2 line-clamp-2 text-sm leading-6 text-stone-400">
             {appointment.serviceName || 'Usluga'}
           </p>
-          <p className="mt-2 text-xs font-semibold uppercase tracking-[0.16em] text-amber-100/70">
+          <p className="mt-2 break-words text-xs font-semibold uppercase tracking-[0.14em] text-amber-100/70 sm:tracking-[0.16em]">
             {appointment.durationMinutes} min · {formatPrice(appointment.price)}
           </p>
         </div>
 
-        <div className="flex w-[220px] items-center justify-center justify-self-center rounded-full border border-amber-200/10 bg-white/[0.035] px-4 py-2.5 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.03)]">
+        <div className="flex w-full max-w-[220px] items-center justify-center justify-self-start rounded-full border border-amber-200/10 bg-white/[0.035] px-4 py-2.5 text-center shadow-[inset_0_1px_0_rgba(255,255,255,0.03)] lg:justify-self-center">
           <span className="text-sm font-black text-stone-100">
             {formatDate(appointment.date)}
           </span>
@@ -92,7 +92,7 @@ function AppointmentCard({ appointment, children }: AppointmentCardProps) {
             label={translateStatus(appointment.status)}
             tone={getStatusTone(appointment.status)}
           />
-          <div className="flex min-h-[42px] flex-wrap gap-2 lg:justify-end">
+          <div className="flex min-h-[42px] w-full flex-col gap-2 sm:w-auto sm:flex-row sm:flex-wrap lg:justify-end">
             {children}
           </div>
         </div>

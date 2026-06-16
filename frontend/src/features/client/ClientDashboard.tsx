@@ -28,14 +28,14 @@ function formatTime(time: string) {
 function PopularServiceCard({ service }: { service: ClientServiceCardDto }) {
   return (
     <AppCard className="flex min-h-[230px] flex-col" variant="interactive">
-      <p className="text-xs font-semibold uppercase tracking-[0.22em] text-amber-200/65">
+      <p className="break-words text-xs font-semibold uppercase tracking-[0.18em] text-amber-200/65 sm:tracking-[0.22em]">
         {service.categoryName || 'Usluga'}
       </p>
-      <h3 className="mt-3 text-xl font-black text-stone-50">{service.name}</h3>
-      <p className="mt-3 flex-1 text-sm leading-6 text-stone-400">
+      <h3 className="mt-3 break-words text-xl font-black text-stone-50">{service.name}</h3>
+      <p className="mt-3 flex-1 break-words text-sm leading-6 text-stone-400">
         {service.description || 'Opis usluge nije unesen.'}
       </p>
-      <div className="mt-5 flex items-center justify-between gap-3 rounded-2xl border border-amber-200/10 bg-white/[0.035] px-4 py-3 text-sm">
+      <div className="mt-5 flex min-w-0 flex-col gap-2 rounded-2xl border border-amber-200/10 bg-white/[0.035] px-4 py-3 text-sm sm:flex-row sm:items-center sm:justify-between sm:gap-3">
         <span className="text-stone-300">{service.durationMinutes} min</span>
         <span className="font-semibold text-amber-100">
           {formatPrice(service.price)}
@@ -95,11 +95,11 @@ function ClientDashboard() {
         subtitle="Upravljajte terminima i rezervacijama na jednom mjestu."
       />
 
-      <section className="rounded-[32px] border border-amber-200/15 bg-black/30 p-6 shadow-[0_0_45px_rgba(0,0,0,0.26)] backdrop-blur-xl lg:p-8">
-        <h1 className="max-w-3xl text-4xl font-black leading-tight text-stone-50">
+      <section className="min-w-0 rounded-[28px] border border-amber-200/15 bg-black/30 p-4 shadow-[0_0_45px_rgba(0,0,0,0.26)] backdrop-blur-xl sm:rounded-[32px] sm:p-6 lg:p-8">
+        <h1 className="max-w-3xl break-words text-3xl font-black leading-tight text-stone-50 sm:text-4xl">
           Dobrodošli nazad
         </h1>
-        <p className="mt-4 max-w-2xl text-base leading-8 text-stone-300">
+        <p className="mt-4 max-w-2xl break-words text-sm leading-7 text-stone-300 sm:text-base sm:leading-8">
           Zakažite novi termin i pratite svoje rezervacije u Classic Cuts
           aplikaciji.
         </p>
